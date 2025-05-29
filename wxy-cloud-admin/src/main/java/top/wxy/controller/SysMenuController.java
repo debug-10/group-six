@@ -37,7 +37,7 @@ public class SysMenuController {
     @PostMapping("nav")
     @Operation(summary = "用户菜单")
     public Result<List<SysMenuVO>> nav() {
-        UserDetail manager = SecurityUser.getManager();
+        ManagerDetail manager = SecurityUser.getManager();
         return Result.ok(sysMenuService.getManagerMenuList(manager, MenuTypeEnum.BUTTON.name()));
     }
 
