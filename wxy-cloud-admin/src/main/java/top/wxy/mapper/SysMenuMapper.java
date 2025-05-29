@@ -21,13 +21,13 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
      * @param managerId 用户ID
      * @param type 菜单类型
      */
-    List<SysMenu> getManagerMenuList(@Param("managerId") Integer managerId, @Param("type") String type ,@Param("isEq") boolean isEq);
+    List<SysMenu> getManagerMenuList(@Param("managerId") Long managerId, @Param("type") String type, @Param("isEq") boolean isEq);
 
     /**
      * 查询管理员权限列表
      * @param managerId  管理员ID
      */
-    List<String> getManagerAuthorityList(@Param("managerId") Integer managerId);
+    List<String> getManagerAuthorityList(@Param("managerId") Long managerId);
 
     /**
      * 查询所有权限列表

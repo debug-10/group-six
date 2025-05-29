@@ -47,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
 
         // 转换为UserDetail
         UserDetail user = new UserDetail();
-        user.setId(managerDetail.getPkId().longValue());
+        user.setId(managerDetail.getId().longValue());
         user.setUsername(managerDetail.getUsername());
         user.setPassword(managerDetail.getPassword());
         user.setEnabled(managerDetail.isEnabled());

@@ -40,7 +40,7 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
     @Transactional(rollbackFor = Exception.class)
     public void save(SysManagerVO vo) {
         SysManager entity = SysManagerConvert.INSTANCE.convert(vo);
-        entity.setSuperAdmin(SuperAdminEnum.NO.getValue());
+        // 删除旧的 setSuperAdmin 调用，因为新表结构中没有这个字段
 
         // 判断用户名是否存在
         SysManager manager = baseMapper.getByUsername(entity.getUsername());
@@ -67,7 +67,7 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
         SysManager entity = SysManagerConvert.INSTANCE.convert(vo);
         // 判断用户名是否存在
         SysManager manager = baseMapper.getByUsername(entity.getUsername());
-        if (manager != null && !manager.getPkId().equals(entity.getPkId())) {
+        if (manager != null && !manager.getId().equals(entity.getId())) {
             throw new ServerException("用户名已经存在");
         }
 
@@ -83,7 +83,7 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void delete(List<Integer> idList) {
+    public void delete(List<Long> idList) {
         // 删除管理员
         removeByIds(idList);
     }
@@ -91,24 +91,26 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
     @Override
     public SysManagerVO getManagerInfo(ManagerDetail manage) {
         SysManagerVO sysManagerVO = new SysManagerVO();
-        System.out.println(">>>>>>getInfo" + manage.getPkId());
-        SysManager sysManager = baseMapper.selectById(manage.getPkId());
+        System.out.println(">>>>>>getInfo" + manage.getId());
+        SysManager sysManager = baseMapper.selectById(manage.getId());
         if (sysManager == null) {
             throw new ServerException("管理员不存在");
         }
-        sysManagerVO.setPkId(sysManager.getPkId());
-        sysManagerVO.setAvatar(sysManager.getAvatar());
+        sysManagerVO.setId(sysManager.getId());
+        sysManagerVO.setAvatarUrl(sysManager.getAvatarUrl());
         sysManagerVO.setUsername(sysManager.getUsername());
+        sysManagerVO.setPhone(sysManager.getPhone());
+        sysManagerVO.setNickname(sysManager.getNickname());
+        sysManagerVO.setTenantId(sysManager.getTenantId());
+        sysManagerVO.setRole(sysManager.getRole());
         sysManagerVO.setStatus(sysManager.getStatus());
-
-        
         sysManagerVO.setCreateTime(sysManager.getCreateTime());
         return sysManagerVO;
     }
 
     @Override
     public void changePassword(ChangePasswordQuery query) {
-        SysManager sysManager = baseMapper.selectById(query.getPkId());
+        SysManager sysManager = baseMapper.selectById(query.getId()); // 假设ChangePasswordQuery也需要更新字段名
         if (sysManager == null) {
             throw new ServerException("管理员不存在");
         }

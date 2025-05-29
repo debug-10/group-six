@@ -32,10 +32,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     public List<SysMenuVO> getManagerMenuList(ManagerDetail manager, String type) {
         List<SysMenu> menuList;
         // 系统管理员，拥有最高权限
-        if (manager.getSuperAdmin() != null && SuperAdminEnum.YES.getValue().equals(manager.getSuperAdmin())) {
-            menuList = baseMapper.getMenuList(type,false);
+        if ("admin".equals(manager.getRole())) {
+            menuList = baseMapper.getMenuList(type, false);
         } else {
-            menuList = baseMapper.getManagerMenuList(manager.getPkId(), type,false);
+            menuList = baseMapper.getManagerMenuList(manager.getId(), type, false);
         }
 
         return TreeUtils.build(SysMenuConvert.INSTANCE.convertList(menuList));
@@ -45,10 +45,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     public Set<String> getManagerAuthority(ManagerDetail manager) {
         // 系统管理员，拥有最高权限
         List<String> authorityList;
-        if (manager.getSuperAdmin() != null && manager.getSuperAdmin().equals(SuperAdminEnum.YES.getValue())) {
+        if ("admin".equals(manager.getRole())) {
             authorityList = baseMapper.getAuthorityList();
         } else {
-            authorityList = baseMapper.getManagerAuthorityList(manager.getPkId());
+            authorityList = baseMapper.getManagerAuthorityList(manager.getId());
         }
 
         // 用户权限列表
@@ -59,6 +59,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             }
             permsSet.add(authority);
         }
+
         return permsSet;
     }
 

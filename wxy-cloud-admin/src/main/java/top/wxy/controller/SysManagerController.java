@@ -74,8 +74,8 @@ public class SysManagerController {
 
     @PostMapping("remove")
     @Operation(summary = "删除")
-    public Result<String> delete(@RequestBody List<Integer> idList) {
-        Integer managerId = SecurityUser.getManagerId();
+    public Result<String> delete(@RequestBody List<Long> idList) {
+        Long managerId = SecurityUser.getManagerId();
         if (idList.contains(managerId)) {
             return Result.error("不能删除当前登录管理员");
         }
@@ -96,10 +96,10 @@ public class SysManagerController {
     @Operation(summary = "修改密码")
     public Result<String> editPassword(@RequestBody @Valid ChangePasswordQuery query) {
         ManagerDetail manager = SecurityUser.getManager();
-        if (manager.getPkId() == null) {
+        if (manager.getId() == null) {
             throw new ServerException("管理员不存在");
         }
-        query.setPkId(manager.getPkId());
+        query.setId(manager.getId()); // 修改：getPkId() -> getId()
         query.setPassword(passwordEncoder.encode(query.getPassword()));
         sysManagerService.changePassword(query);
         return Result.ok();
