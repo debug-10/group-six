@@ -12,12 +12,10 @@ import top.wxy.framework.common.exception.ServerException;
 import top.wxy.framework.common.utils.PageResult;
 import top.wxy.mapper.SysManagerMapper;
 import top.wxy.model.entity.SysManager;
-import top.wxy.model.entity.SysManagerRole;
 import top.wxy.model.query.ChangePasswordQuery;
 import top.wxy.model.query.SysManagerQuery;
 import top.wxy.model.vo.SysManagerVO;
 import top.wxy.security.user.ManagerDetail;
-import top.wxy.service.SysManagerRoleService;
 import top.wxy.service.SysManagerService;
 
 import java.util.List;
@@ -29,7 +27,6 @@ import java.util.List;
 @AllArgsConstructor
 public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, SysManager> implements SysManagerService {
 
-    private final SysManagerRoleService sysManagerRoleService;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -62,8 +59,6 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
 
         // 保存用户
         baseMapper.insert(entity);
-        // 保存用户角色关系
-        sysManagerRoleService.saveOrUpdate(entity.getPkId(), vo.getRoleId());
     }
 
     @Override
@@ -84,8 +79,6 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
 
         // 更新用户
         updateById(entity);
-        // 更新用户角色关系
-        sysManagerRoleService.saveOrUpdate(entity.getPkId(), vo.getRoleId());
     }
 
     @Override
@@ -93,8 +86,6 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
     public void delete(List<Integer> idList) {
         // 删除管理员
         removeByIds(idList);
-        // 删除用户角色关系
-        sysManagerRoleService.removeByManagerId(idList);
     }
 
     @Override
@@ -109,17 +100,7 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
         sysManagerVO.setAvatar(sysManager.getAvatar());
         sysManagerVO.setUsername(sysManager.getUsername());
         sysManagerVO.setStatus(sysManager.getStatus());
-        
-        // 安全获取角色ID
-        try {
-            SysManagerRole managerRole = sysManagerRoleService.getByManagerId(manage.getPkId());
-            if (managerRole != null) {
-                sysManagerVO.setRoleId(managerRole.getRoleId());
-            }
-        } catch (ServerException e) {
-            // 如果没有绑定角色，设置为null或默认值
-            sysManagerVO.setRoleId(null);
-        }
+
         
         sysManagerVO.setCreateTime(sysManager.getCreateTime());
         return sysManagerVO;

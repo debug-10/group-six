@@ -15,7 +15,6 @@ import top.wxy.model.vo.SysTokenVO;
 import top.wxy.security.user.ManagerDetail;
 import top.wxy.security.utils.TokenUtils;
 import top.wxy.service.AuthService;
-import top.wxy.service.SysMenuService;
 
 @Service
 @AllArgsConstructor
@@ -23,7 +22,6 @@ public class AuthServiceImpl implements AuthService {
 
     private final TokenStoreCache tokenStoreCache;
     private final AuthenticationManager authenticationManager;
-    private final SysMenuService sysMenuService;
 
     @Override
     public SysTokenVO loginByAccount(SysAccountLoginVO params) {
@@ -42,9 +40,7 @@ public class AuthServiceImpl implements AuthService {
 
         // 用户信息
         ManagerDetail managerDetail = (ManagerDetail) authentication.getPrincipal();
-        
-        // 获取用户权限
-        managerDetail.setAuthoritySet(sysMenuService.getManagerAuthority(managerDetail));
+
 
         // 转换为UserDetail
         UserDetail user = new UserDetail();
