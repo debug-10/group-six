@@ -1,16 +1,17 @@
 package top.wxy.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @Schema(description = "创建公告请求对象")
 public class NewsCreateDTO {
+
 
     @NotBlank(message = "公告标题不能为空")
     @Schema(description = "公告标题", required = true)

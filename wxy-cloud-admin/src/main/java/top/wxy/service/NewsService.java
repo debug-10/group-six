@@ -3,6 +3,7 @@ package top.wxy.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.wxy.model.entity.News;
 import top.wxy.model.vo.NewsVO;
+import top.wxy.model.vo.NewsDetailVO;
 import top.wxy.model.dto.NewsCreateDTO;
 import top.wxy.model.dto.NewsUpdateDTO;
 
@@ -34,7 +35,7 @@ public interface NewsService extends IService<News> {
      * @param id 公告ID
      * @return 公告视图对象
      */
-    NewsVO getNewsById(Long id);
+    NewsDetailVO getNewsById(Long id);
 
     /**
      * 查询公告列表

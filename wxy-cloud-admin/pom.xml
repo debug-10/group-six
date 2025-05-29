@@ -32,11 +32,11 @@
     </properties>
 
     <dependencies>
-
+        <!-- 编写公告模块接口的DTO类时遇到@NotNull注释所需的依赖缺失的问题 -->
+        <!-- 遂添加了validation依赖 -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
