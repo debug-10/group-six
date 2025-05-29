@@ -16,6 +16,9 @@ import top.wxy.security.user.ManagerDetail;
 import top.wxy.security.utils.TokenUtils;
 import top.wxy.service.AuthService;
 
+/**
+ * @author 笼中雀
+ */
 @Service
 @AllArgsConstructor
 public class AuthServiceImpl implements AuthService {

@@ -32,7 +32,7 @@
         order by sort asc
     </select>
 
-    <select id="getManagerMenuList" resultType="top.ssy.share.admin.model.entity.SysMenu">
+    <select id="getManagerMenuList" resultType="top.wxy.model.entity.SysMenu">
         select t3.* from sys_manager_role t1
         left join sys_role_menu t2 on t1.role_id = t2.role_id
         left join sys_menu t3 on t2.menu_id = t3.pk_id
