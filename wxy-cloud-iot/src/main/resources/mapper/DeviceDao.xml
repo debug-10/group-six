@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.wxy.dao.DeviceDao">
+    <resultMap id="DeviceResultMap" type="top.wxy.entity.Device">
+        <id column="id" property="id" />
+        <result column="device_id" property="deviceId" />
+        <result column="name" property="name" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    <select id="getList" resultMap="DeviceResultMap">
+        SELECT t1.*
+        FROM t_device t1 WHERE t1.deleted = 0
+        <if test="name != null and name.trim() != ''">
+            AND t1.name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="type != null">
+            AND t1.type = #{type}
+        </if>
+        <if test="status != null">
+            AND t1.status = #{status}
+        </if>
+    </select>
+</mapper>

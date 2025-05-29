@@ -1,0 +1,83 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /share-admin-api
+
+spring:
+  application:
+    name: wxy-cloud-admin
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        server-addr: @nacos.server-addr@
+        namespace: @nacos.namespace@
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+  config:
+    import:
+      - optional:nacos:datasource.yaml
+      - optional:nacos:common.yaml
+      - optional:nacos:admin-specific.yaml
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: top.wxy.model.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# API文档配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: top.wxy.controller
+
+# Knife4j配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+  basic:
+    enable: true
+    username: admin
+    password: 123456
+
+# 安全认证白名单
+auth:
+  ignore_urls:
+    - /sys/auth/login
+    - /sys/auth/captcha
+    - /actuator/**
+    - /v3/api-docs/**
+    - /webjars/**
+    - /swagger/**
+    - /swagger-resources/**
+    - /swagger-ui.html
+    - /swagger-ui/**
+    - /doc.html
+    - /

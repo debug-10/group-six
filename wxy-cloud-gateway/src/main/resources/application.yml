@@ -1,0 +1,88 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wxy-cloud-gateway
+  cloud:
+    gateway:
+      metrics:
+        enabled: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: wxy-cloud-admin
+          uri: lb://wxy-cloud-admin
+          order: 1
+          predicates:
+            - Path=/share-admin-api/**
+        - id: wxy-cloud-user
+          uri: lb://wxy-cloud-user
+          order: 2
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: wxy-cloud-content
+          uri: lb://wxy-cloud-content
+          order: 3
+          predicates:
+            - Path=/content/**
+          filters:
+            - StripPrefix=1
+        - id: wxy-cloud-iot
+          uri: lb://wxy-cloud-iot
+          order: 4
+          predicates:
+            - Path=/iot/**
+          filters:
+            - StripPrefix=1
+
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        server-addr: @nacos.server-addr@
+        namespace: @nacos.namespace@
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+  config:
+    import:
+      - optional:nacos:${spring.application.name}.yaml
+      - optional:nacos:datasource.yaml
+      - optional:nacos:common.yaml
+
+# knife4j网关聚合配置
+knife4j:
+  gateway:
+    enabled: true
+    strategy: discover
+    discover:
+      enabled: true
+      version: openapi3
+    routes:
+      - name: 系统管理服务
+        url: /share-admin-api/v3/api-docs/default
+        service-name: wxy-cloud-admin
+        order: 1
+      - name: 用户服务
+        url: /user/v3/api-docs
+        service-name: wxy-cloud-user
+        order: 2
+      - name: 内容服务
+        url: /content/v3/api-docs
+        service-name: wxy-cloud-content
+        order: 3
+      - name: 物联网服务
+        url: /iot/v3/api-docs
+        service-name: wxy-cloud-iot
+        order: 4
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: TRACE
