@@ -18,7 +18,6 @@ import top.wxy.model.query.SysMenuQuery;
 import top.wxy.model.vo.SysMenuVO;
 import top.wxy.security.user.ManagerDetail;
 import top.wxy.service.SysMenuService;
-import top.wxy.service.SysRoleMenuService;
 import top.wxy.utils.TreeUtils;
 
 
@@ -28,7 +27,6 @@ import java.util.*;
 @AllArgsConstructor
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
 
-    private final SysRoleMenuService sysRoleMenuService;
 
     @Override
     public List<SysMenuVO> getManagerMenuList(ManagerDetail manager, String type) {
@@ -39,7 +37,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         } else {
             menuList = baseMapper.getManagerMenuList(manager.getPkId(), type,false);
         }
-    
+
         return TreeUtils.build(SysMenuConvert.INSTANCE.convertList(menuList));
     }
 
@@ -52,7 +50,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         } else {
             authorityList = baseMapper.getManagerAuthorityList(manager.getPkId());
         }
-    
+
         // 用户权限列表
         Set<String> permsSet = new HashSet<>();
         for (String authority : authorityList) {
@@ -132,8 +130,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         // 删除菜单
         removeById(id);
 
-        // 删除角色菜单关系
-        sysRoleMenuService.deleteByMenuId(id);
     }
 
     @Override
