@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/tenants")
+@RequestMapping("/share-admin-api/tenants")
 @Tag(name = "租户管理" ,description = "租户管理")
 public class TenantController {
 

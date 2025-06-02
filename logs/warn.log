@@ -13,3 +13,8 @@
 2025-06-02 10:21:30.332 [boundedElastic-2] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-admin
 2025-06-02 10:21:35.320 [boundedElastic-2] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-admin
 2025-06-02 10:21:36.040 [boundedElastic-2] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-admin
+2025-06-02 12:21:17.862 [boundedElastic-50] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-content
+2025-06-02 12:21:17.872 [boundedElastic-53] WARN  com.alibaba.nacos.client.utils.ConcurrentDiskUtil - lock DEFAULT_GROUP%40%40wxy-cloud-content conflict;retry time: 1
+2025-06-02 12:21:17.872 [boundedElastic-53] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-content
+2025-06-02 12:22:58.479 [boundedElastic-50] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-content
+2025-06-02 12:22:58.479 [boundedElastic-51] WARN  o.s.cloud.loadbalancer.core.RoundRobinLoadBalancer - No servers available for service: wxy-cloud-content
