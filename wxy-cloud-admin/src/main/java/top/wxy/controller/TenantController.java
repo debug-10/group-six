@@ -27,7 +27,7 @@ public class TenantController {
     @Operation(summary = "创建租户")
     public ApiResponse<Map<String, Long>> create(@RequestBody TenantDTO tenantDTO) {
         Tenant tenant = tenantService.convertToEntity(tenantDTO);
-        tenant.setTenantId(System.currentTimeMillis()); // 临时生成 tenantId，实际应由业务逻辑提供
+//        tenant.setTenantId(System.currentTimeMillis()); // 临时生成 tenantId，实际应由业务逻辑提供
         tenant = tenantService.saveTenant(tenant);
         Map<String, Long> data = new HashMap<>();
         data.put("tenant_id", tenant.getTenantId());

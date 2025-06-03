@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @TableName("t_tenant")
 public class Tenant {
-    @TableId(type = IdType.NONE)
+    @TableId(value = "tenant_id", type = IdType.AUTO)
     private Long tenantId;
 
     private String tenantName;

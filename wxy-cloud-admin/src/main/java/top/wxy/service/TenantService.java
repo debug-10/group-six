@@ -6,6 +6,8 @@ import top.wxy.model.dto.TenantListDTO;
 import top.wxy.model.entity.Tenant;
 
 public interface TenantService {
+    Tenant insert(Tenant entity);
+
     Tenant saveTenant(Tenant entity);
 
     Tenant convertToEntity(TenantDTO dto);
