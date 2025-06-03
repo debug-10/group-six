@@ -29,17 +29,21 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao, UserEntity> implem
     @Transactional(rollbackFor = Exception.class)
     public void save(UserDTO dto) {
         UserEntity entity = UserConvert.INSTANCE.convert(dto);
+        // 设置默认角色为3（普通用户）
+        if (entity.getRole() == null) {
+            entity.setRole(3);
+        }
         // 判断⽤户名是否存在
         UserEntity user = baseMapper.getByUsername(entity.getUsername());
         if (user != null) {
             throw new ServerException("⽤户名已经存在" );
         }
         // 判断⼿机号是否存在
-        user = baseMapper.getByMobile(entity.getMobile());
+        user = baseMapper.getByPhone(entity.getPhone());
         if (user != null) {
             throw new ServerException("⼿机号已经存在" );
         }
-// 保存⽤户
+        // 保存⽤户
         baseMapper.insert(entity);
     }
 
@@ -57,8 +61,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao, UserEntity> implem
     }
 
     @Override
-    public UserVO getByMobile(String mobile) {
-        UserEntity user = baseMapper.getByMobile(mobile);
+    public UserVO getByPhone(String mobile) {
+        UserEntity user = baseMapper.getByPhone(mobile);
         return UserConvert.INSTANCE.convert(user);
     }
 

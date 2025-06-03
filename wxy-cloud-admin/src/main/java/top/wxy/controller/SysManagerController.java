@@ -29,16 +29,12 @@ import java.util.List;
 public class SysManagerController {
 
     private final SysManagerService sysManagerService;
-
     private final PasswordEncoder passwordEncoder;
-
-
 
     @PostMapping("page")
     @Operation(summary = "分页")
     public Result<PageResult<SysManagerVO>> page(@RequestBody @Valid SysManagerQuery query) {
         PageResult<SysManagerVO> page = sysManagerService.page(query);
-
         return Result.ok(page);
     }
 
@@ -47,28 +43,17 @@ public class SysManagerController {
     public Result<String> save(@RequestBody @Valid SysManagerVO vo) {
         // 新增密码不能为空
         if (StrUtil.isBlank(vo.getPassword())) {
-            Result.error("密码不能为空");
+            return Result.error("密码不能为空");
         }
-        // 密码加密
-        vo.setPassword(passwordEncoder.encode(vo.getPassword()));
         // 保存
         sysManagerService.save(vo);
-
         return Result.ok();
     }
 
     @PostMapping("edit")
     @Operation(summary = "修改")
     public Result<String> update(@RequestBody @Valid SysManagerVO vo) {
-        // 如果密码不为空，则进行加密处理
-        if (StrUtil.isBlank(vo.getPassword())) {
-            vo.setPassword(null);
-        } else {
-            vo.setPassword(passwordEncoder.encode(vo.getPassword()));
-        }
-
         sysManagerService.update(vo);
-
         return Result.ok();
     }
 
@@ -79,9 +64,7 @@ public class SysManagerController {
         if (idList.contains(managerId)) {
             return Result.error("不能删除当前登录管理员");
         }
-
         sysManagerService.delete(idList);
-
         return Result.ok();
     }
 
@@ -99,11 +82,8 @@ public class SysManagerController {
         if (manager.getId() == null) {
             throw new ServerException("管理员不存在");
         }
-        query.setId(manager.getId()); // 修改：getPkId() -> getId()
-        query.setPassword(passwordEncoder.encode(query.getPassword()));
+        query.setId(manager.getId());
         sysManagerService.changePassword(query);
         return Result.ok();
     }
-
-
 }
