@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.wxy.mapper.DeviceMapper">
+
+    <select id="getDevicePage" resultType="top.wxy.model.vo.DeviceVO">
+        SELECT td.* FROM t_device td
+        WHERE td.deleted = 0
+        <if test="query.userId != null">
+            AND EXISTS (SELECT 1 FROM t_user_device ud WHERE ud.device_id = td.id AND ud.user_id = #{query.userId})
+        </if>
+        <if test="query.tenantId != null">
+            AND td.tenant_id = #{query.tenantId}
+        </if>
+        <if test="query.status != null">
+            AND td.status = #{query.status}
+        </if>
+        <if test="query.type != null">
+            AND td.type = #{query.type}
+        </if>
+        ORDER BY td.create_time DESC
+    </select>
+
+    <select id="getByDeviceMac" parameterType="string" resultType="top.wxy.model.entity.Device">
+        SELECT * FROM t_device WHERE device_mac = #{deviceMac} AND deleted = 0
+    </select>
+
+    <!-- 确保插入和更新支持 location 字段 -->
+    <insert id="insert" parameterType="top.wxy.model.entity.Device" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_device (device_mac, name, type, tenant_id, status, temperature, humidity, location, create_time, update_time, deleted)
+        VALUES (#{deviceMac}, #{name}, #{type}, #{tenantId}, #{status}, #{temperature}, #{humidity}, #{location}, #{createTime}, #{updateTime}, #{deleted})
+    </insert>
+    <update id="updateById" parameterType="top.wxy.model.entity.Device">
+        UPDATE t_device
+        <set>
+            <if test="et.deviceMac != null">device_mac = #{et.deviceMac},</if>
+            <if test="et.name != null">name = #{et.name},</if>
+            <if test="et.type != null">type = #{et.type},</if>
+            <if test="et.status != null">status = #{et.status},</if>
+            <if test="et.temperature != null">temperature = #{et.temperature},</if>
+            <if test="et.humidity != null">humidity = #{et.humidity},</if>
+            <if test="et.location != null">location = #{et.location},</if>
+            <if test="et.updateTime != null">update_time = #{et.updateTime},</if>
+        </set>
+        WHERE id = #{et.id} AND deleted = 0
+    </update>
+
+
+</mapper>
