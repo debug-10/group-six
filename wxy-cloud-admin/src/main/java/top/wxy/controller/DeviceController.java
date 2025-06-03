@@ -22,7 +22,7 @@ import top.wxy.model.vo.DeviceVO;
 @RestController
 @AllArgsConstructor
 @Tag(name = "设备管理", description = "设备管理")
-@RequestMapping("/share-admin-api/api/devices")
+@RequestMapping("/api/devices")
 public class DeviceController {
     private final DeviceService deviceService;
 
