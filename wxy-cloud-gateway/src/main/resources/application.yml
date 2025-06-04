@@ -62,24 +62,6 @@ knife4j:
     discover:
       enabled: true
       version: openapi3
-    routes:
-      - name: 系统管理服务
-        url: /share-admin-api/v3/api-docs/default
-        service-name: wxy-cloud-admin
-        order: 1
-      - name: 用户服务
-        url: /user/v3/api-docs
-        service-name: wxy-cloud-user
-        order: 2
-      - name: 内容服务
-        url: /content/v3/api-docs
-        service-name: wxy-cloud-content
-        order: 3
-      - name: 物联网服务
-        url: /iot/v3/api-docs
-        service-name: wxy-cloud-iot
-        order: 4
-
 logging:
   level:
     org:
