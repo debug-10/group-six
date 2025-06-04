@@ -10,20 +10,21 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@TableName("t_tenant")
-public class Tenant {
-    @TableId(value = "tenant_id", type = IdType.AUTO)
-    private Long tenantId;
+@TableName("t_alarm")
+public class Alarm {
+    @TableId(value="id",type = IdType.AUTO)
+    private Long id;
 
-    private String tenantName;
-    private Long creatorId;
-    private Integer packageType;
-    private String adminUsername;
+    private Long deviceId;
+
+    private String type;
+
+    private Integer level;
+
+    private String message;
+
     private Integer status;
 
-    @TableField(fill = FieldFill.INSERT, exist = false)
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE, exist = false)
-    private LocalDateTime updateTime;
 }
