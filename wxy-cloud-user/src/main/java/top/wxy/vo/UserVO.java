@@ -21,10 +21,12 @@ public class UserVO implements Serializable {
     @Schema(description = "姓名")
     private String nickname;
     @Schema(description = "⼿机号")
-    private String mobile;
+    private String phone;
     @Schema(description = "头像")
-    private String avatar;
-    @Schema(description = "性别 0：男 1：⼥ 2：未知")
-    private Integer gender;
+    private String avatarUrl;
+    @Schema(description = "租户ID")
+    private Long tenantId;
+    @Schema(description = "用户角色：1=超管，2=租户管理员，3=普通用户")
+    private Integer role;
 }
 

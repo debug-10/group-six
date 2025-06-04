@@ -21,7 +21,7 @@ public class MobileUserDetailsServiceImpl implements MobileUserDetailsService {
     private final UserDao sysUserDao;
     @Override
     public UserDetails loadUserByMobile(String mobile) throws UsernameNotFoundException {
-        UserEntity userEntity = sysUserDao.getByMobile(mobile);
+        UserEntity userEntity = sysUserDao.getByPhone(mobile);
         if (userEntity == null) {
             throw new UsernameNotFoundException("⼿机号或验证码错误");
         }

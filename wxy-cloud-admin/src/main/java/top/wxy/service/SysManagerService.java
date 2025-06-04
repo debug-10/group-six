@@ -39,7 +39,7 @@ public interface SysManagerService extends IService<SysManager> {
      *
      * @param idList
      */
-    void delete(List<Integer> idList);
+    void delete(List<Long> idList);
 
     /**
      * 修改密码
