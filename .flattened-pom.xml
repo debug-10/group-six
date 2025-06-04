@@ -243,7 +243,7 @@
         <nacos.namespace>public</nacos.namespace>
         <nacos.password>nacos</nacos.password>
         <profile.name>dev</profile.name>
-        <nacos.server-addr>127.0.0.1:8848</nacos.server-addr>
+        <nacos.server-addr>121.4.51.19:8848</nacos.server-addr>
       </properties>
     </profile>
     <profile>
@@ -253,7 +253,7 @@
         <nacos.namespace>public</nacos.namespace>
         <nacos.password>nacos</nacos.password>
         <profile.name>test</profile.name>
-        <nacos.server-addr>127.0.0.1:8848</nacos.server-addr>
+        <nacos.server-addr>121.4.51.19:8848</nacos.server-addr>
       </properties>
     </profile>
     <profile>
@@ -263,7 +263,7 @@
         <nacos.namespace>public</nacos.namespace>
         <nacos.password>nacos</nacos.password>
         <profile.name>prod</profile.name>
-        <nacos.server-addr>81.68.235.20:8848</nacos.server-addr>
+        <nacos.server-addr>121.4.51.19:8080</nacos.server-addr>
       </properties>
     </profile>
   </profiles>
