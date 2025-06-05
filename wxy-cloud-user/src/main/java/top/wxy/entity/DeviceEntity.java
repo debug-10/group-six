@@ -7,21 +7,22 @@ import lombok.EqualsAndHashCode;
 import top.wxy.framework.mybatis.entity.BaseEntity;
 
 /**
+ * 设备实体类
  * @author 笼中雀
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_user")
-public class UserEntity extends BaseEntity {
-    private String username;
-    private String password;
-    private String phone;
-    private String nickname;
-    @TableField("avatar_url")
-    private String avatarUrl;
+@TableName("t_device")
+public class DeviceEntity extends BaseEntity {
+    @TableField("device_mac")
+    private String deviceMac;
+    private String name;
+    private Integer type;
     private Integer status;
+    private Float temperature;
+    private Float humidity;
+    private String location;
+    @TableField("tenant_id")
     private Long tenantId;
-    private Integer role;
-    @TableField(exist = false)
     private Integer deleted;
 }

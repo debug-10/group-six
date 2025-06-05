@@ -4,7 +4,11 @@ auth:
     - /api/auth/login
     - /api/auth/send/code
     - /api/auth/mobile
+    - /api/file/upload
+    - /api/file/upload/avatar
     - /api/user/getUserById
+    - /api/device/add
+    - /api/device/list
     # 文档相关白名单
     - /actuator/**
     - /v3/api-docs/**

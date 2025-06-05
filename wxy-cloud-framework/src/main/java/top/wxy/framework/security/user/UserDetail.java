@@ -1,6 +1,7 @@
 package top.wxy.framework.security.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
  * @author 笼中雀
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDetail implements UserDetails {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -24,14 +26,13 @@ public class UserDetail implements UserDetails {
     private String username;
     private String password;
     private String nickname;
-    private String avatar;
+    private String avatarUrl;
     private Integer gender;
-    private String email;
-    private String mobile;
+    private String phone;
     private Integer status;
     private LocalDateTime createTime;
-    private Long tenantId;  // 新增租户ID
-    private Integer role;   // 新增角色字段
+    private Long tenantId;
+    private Integer role;
 
     /**
      * 帐户是否过期
