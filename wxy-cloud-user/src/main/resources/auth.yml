@@ -1,6 +1,16 @@
 auth:
   ignore_urls:
+    # 业务接口白名单
     - /api/auth/login
     - /api/auth/send/code
     - /api/auth/mobile
     - /api/user/getUserById
+    # 文档相关白名单
+    - /actuator/**
+    - /v3/api-docs/**
+    - /webjars/**
+    - /swagger/**
+    - /swagger-resources/**
+    - /swagger-ui.html
+    - /swagger-ui/**
+    - /doc.html

@@ -20,8 +20,7 @@ public class SecurityUser {
     /**
      * 获取用户ID
      */
-    public static Integer getManagerId() {
-        return getManager().getPkId();
+    public static Long getManagerId() { // 修改返回类型为Long
+        return getManager().getId(); // 已经使用getId()
     }
-
 }

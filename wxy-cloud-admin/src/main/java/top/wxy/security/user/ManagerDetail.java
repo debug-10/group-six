@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,12 +17,14 @@ public class ManagerDetail implements UserDetails {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private Integer pkId;
+    private Long id;
     private String username;
     private String password;
-    private String realName;
-    private String avatar;
-    private Integer superAdmin;
+    private String phone;
+    private String nickname;
+    private String avatarUrl;
+    private Long tenantId;
+    private Integer role;
     private Integer status;
 
     /**
@@ -43,7 +46,7 @@ public class ManagerDetail implements UserDetails {
     /**
      * 拥有权限集合
      */
-    private Set<String> authoritySet;
+    private Set<String> authoritySet = new HashSet<>();
 
     @Override
     @JsonIgnore

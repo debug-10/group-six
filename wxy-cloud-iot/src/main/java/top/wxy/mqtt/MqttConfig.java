@@ -19,10 +19,6 @@ import org.springframework.integration.mqtt.support.DefaultPahoMessageConverter;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
-/**
- * @author moqi
- * MQTT 配置类，⽤于设置和管理 MQTT 连接和消息处理。
- */
 @Data
 @Slf4j
 @Configuration
@@ -34,19 +30,13 @@ public class MqttConfig {
     private String password;
     private String clientId;
 
-
     @PostConstruct
     public void init() {
         log.info("MQTT 主机: {} 客户端ID：{}", this.brokerUrl, this.clientId);
     }
 
-
-    /**
-     * 配置并返回一个 MqttPahoClientFactory 实例，用于创建 MQTT 客户端连接。
-     */
     @Bean
     public MqttPahoClientFactory mqttClientFactory() {
-        // 设置连接选项，包括服务器 URI、用户名和密码。
         final MqttConnectOptions options = new MqttConnectOptions();
         options.setServerURIs(new String[]{brokerUrl});
         options.setUserName(username);
@@ -56,23 +46,28 @@ public class MqttConfig {
         return factory;
     }
 
+    // 关键修改1：独立定义MqttPahoMessageHandler Bean
+    @Bean
+    public MqttPahoMessageHandler mqttMessageHandler() {
+        MqttPahoMessageHandler handler =
+                new MqttPahoMessageHandler(clientId + "_out", mqttClientFactory());
+        handler.setAsync(true);
+        handler.setDefaultQos(1);
+        return handler;
+    }
 
-    // 出站通道（发送消息）
+    // 关键修改2：ServiceActivator使用已有Bean
+    @Bean
+    @ServiceActivator(inputChannel = "mqttOutboundChannel")
+    public MessageHandler mqttOutbound(MqttPahoMessageHandler mqttMessageHandler) {
+        return mqttMessageHandler;
+    }
+
     @Bean
     public MessageChannel mqttOutboundChannel() {
         return new DirectChannel();
     }
 
-    @Bean
-    @ServiceActivator(inputChannel = "mqttOutboundChannel")
-    public MessageHandler mqttOutbound() {
-        MqttPahoMessageHandler messageHandler =
-                new MqttPahoMessageHandler(clientId + "_out", mqttClientFactory());
-        messageHandler.setAsync(true);
-        return messageHandler;
-    }
-
-    // 入站通道（接收消息）
     @Bean
     public MessageChannel mqttInputChannel() {
         return new DirectChannel();
@@ -82,7 +77,10 @@ public class MqttConfig {
     public MessageProducer inbound() {
         MqttPahoMessageDrivenChannelAdapter adapter =
                 new MqttPahoMessageDrivenChannelAdapter(
-                        clientId + "_in", mqttClientFactory(), "device/+/status");
+                        clientId + "_in", mqttClientFactory(),
+                        "device/+/status",
+                        "device/dev_8CCE4ED1ED34_5/status"
+                );
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
         adapter.setQos(1);
@@ -90,4 +88,22 @@ public class MqttConfig {
         return adapter;
     }
 
+    @Bean
+    public MessageChannel fanStatusChannel() {
+        return new DirectChannel();
+    }
+
+    @Bean
+    public MessageProducer fanStatusInbound() {
+        MqttPahoMessageDrivenChannelAdapter adapter =
+                new MqttPahoMessageDrivenChannelAdapter(
+                        clientId + "_fan_in", mqttClientFactory(),
+                        "device/dev_8CCE4ED1ED34_5/status"
+                );
+        adapter.setCompletionTimeout(5000);
+        adapter.setConverter(new DefaultPahoMessageConverter());
+        adapter.setQos(1);
+        adapter.setOutputChannel(fanStatusChannel());
+        return adapter;
+    }
 }

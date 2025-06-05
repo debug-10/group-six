@@ -12,6 +12,6 @@ import top.wxy.vo.UserVO;
 public interface UserService extends BaseService<UserEntity> {
     void save(UserDTO vo);
     void update(UserDTO dto);
-    UserVO getByMobile(String mobile);
+    UserVO getByPhone(String phone);
     UserVO getById(Long id);
 }

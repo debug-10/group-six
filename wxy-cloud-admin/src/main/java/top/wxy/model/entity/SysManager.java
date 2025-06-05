@@ -8,14 +8,14 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@TableName("sys_manager")
+@TableName("t_user")
 public class SysManager {
 
     /**
-     * id
+     * 用户ID
      */
-    @TableId(value = "pk_id", type = IdType.AUTO)
-    private Integer pkId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 用户名
@@ -24,42 +24,52 @@ public class SysManager {
     private String username;
 
     /**
-     * 密码
+     * 密码（加密后）
      */
     @TableField("password")
     private String password;
 
     /**
-     * 头像
+     * 手机号
      */
-    @TableField("avatar")
-    private String avatar;
+    @TableField("phone")
+    private String phone;
 
     /**
-     * 超级管理员   0：否   1：是
+     * 昵称
      */
-    @TableField("super_admin")
-    private Integer superAdmin;
+    @TableField("nickname")
+    private String nickname;
 
     /**
-     * 状态  0：停用   1：正常
+     * 头像URL
+     */
+    @TableField("avatar_url")
+    private String avatarUrl;
+
+    /**
+     * 所属学校（租户）
+     */
+    @TableField("tenant_id")
+    private Long tenantId;
+
+    /**
+     * 用户类型：1=超管，2=租户管理员，3=普通用户
+     */
+    @TableField("role")
+    private Integer role;
+
+    /**
+     * 状态：1=启用，0=禁用
      */
     @TableField("status")
     private Integer status;
-
-    /**
-     * 删除标识  0：正常   1：已删除
-     */
-    @TableField(value = "delete_flag", fill = FieldFill.INSERT)
-    @TableLogic
-    private Integer deleteFlag;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
 
     /**
      * 更新时间
