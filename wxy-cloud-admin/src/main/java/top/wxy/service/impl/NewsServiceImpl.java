@@ -74,19 +74,25 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     public List<NewsVO> listNews(String title, Integer visibleRange, Long tenantId) {
         LambdaQueryWrapper<News> queryWrapper = new LambdaQueryWrapper<>();
 
-        // 构建查询条件
-        queryWrapper.like(title != null, News::getTitle, title)
-                .eq(visibleRange != null, News::getVisibleRange, visibleRange);
+        // 超管场景：不传入任何参数时返回所有记录
+        boolean isAdminQuery = title == null && visibleRange == null && tenantId == null;
+        if (!isAdminQuery) {
+            // 构建查询条件
+            queryWrapper.like(title != null, News::getTitle, title);
 
-        // 当visibleRange为2时，必须传入tenantId
-        if (visibleRange != null && visibleRange == 2) {
-            if (tenantId == null) {
-                throw new RuntimeException("指定租户可见时，必须传入tenantId");
+            // 普通用户场景：仅根据租户ID筛选
+            if (tenantId != null) {
+                // 查询条件：(tenantId=null) 或者 (tenantId=指定值)
+                // 即返回所有公共新闻和指定租户的新闻
+                queryWrapper.and(wrapper ->
+                        wrapper.isNull(News::getTenantId)
+                                .or()
+                                .eq(News::getTenantId, tenantId)
+                );
+            } else {
+                // 未指定租户ID时，默认只查询租户ID为null的记录（公共新闻）
+                queryWrapper.isNull(News::getTenantId);
             }
-            queryWrapper.eq(News::getTenantId, tenantId);
-        } else {
-            // visibleRange为1或未传时，忽略tenantId（允许为null）
-            queryWrapper.isNull(News::getTenantId); // 仅查询tenantId为null的记录（全员可见）
         }
 
         queryWrapper.orderByDesc(News::getCreateTime);
@@ -94,8 +100,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
         List<News> newsList = this.list(queryWrapper);
         return newsList.stream().map(news -> {
             NewsVO vo = new NewsVO();
-            BeanUtils.copyProperties(news, vo, "content"); // 简略版不返回content
-            vo.setTenantName("模拟租户名称"); // 模拟租户名称
+            BeanUtils.copyProperties(news, vo, "content");
             return vo;
         }).collect(Collectors.toList());
     }
