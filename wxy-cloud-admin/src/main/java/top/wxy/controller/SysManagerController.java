@@ -22,6 +22,9 @@ import top.wxy.service.SysManagerService;
 
 import java.util.List;
 
+/**
+ * @author 笼中雀
+ */
 @Tag(name = "管理员管理")
 @AllArgsConstructor
 @RestController
