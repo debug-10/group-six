@@ -2,31 +2,45 @@ package top.wxy.service.impl;
 
 import com.alibaba.fastjson2.JSON;
 import jakarta.annotation.Resource;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.integration.mqtt.outbound.MqttPahoMessageHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.mqtt.support.MqttHeaders;
+import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Service;
-import top.wxy.dto.FanStatusDTO;
+import top.wxy.commond.FanCommand;  // 导入新位置的类
+import top.wxy.commond.LightCommand;  // 导入新位置的类
 import top.wxy.entity.Device;
 import top.wxy.mapper.EfanMapper;
 import top.wxy.service.EfanService;
 
 @Service
 @Slf4j
-@AllArgsConstructor
 public class EfanServiceImpl implements EfanService {
-    private static final String FAN_CONTROL_TOPIC = "device/dev_8CCE4ED1ED34_5/control";
-    private static final String LIGHT_CONTROL_TOPIC = "device/dev_8CCE4ED1ED34_0/control";
+
+    // 直接通过 @Value 注入主题配置（无需在类中定义字段）
+    @Value("${mqtt.fan-control-topic}")
+    private String fanControlTopic; // 风扇控制主题（从配置文件获取）
+
+    @Value("${mqtt.rgb-control-topic}")
+    private String rgbControlTopic; // RGB控制主题（从配置文件获取）
+
+    @Value("${mqtt.fan-status-topic}")
+    private String fanStatusTopic; // 风扇状态主题（从配置文件获取）
+
+    @Value("${mqtt.rgb-status-topic}")
+    private String rgbStatusTopic; // RGB状态主题（从配置文件获取）
 
     @Resource
     private EfanMapper efanMapper;
 
-    // 关键修改3：确保注入的Bean名称与配置类中一致
-    @Resource
-    private MqttPahoMessageHandler mqttMessageHandler;
+    // 注入通道
+    @Resource(name = "fanControlChannel")
+    private MessageChannel fanControlChannel;
+
+    @Resource(name = "rgbControlChannel")
+    private MessageChannel rgbControlChannel;
 
     @Override
     public void startNormalMode() {
@@ -43,6 +57,7 @@ public class EfanServiceImpl implements EfanService {
     @Override
     public void turnOff() {
         sendFanCommand(0);
+        sendLightCommand(0, 0, 255); // 补充RGB控制
     }
 
     @Override
@@ -52,43 +67,28 @@ public class EfanServiceImpl implements EfanService {
     }
 
     @Override
-    public void handleFanStatusReport(FanStatusDTO statusDTO) {
-        Integer status = "ON".equalsIgnoreCase(statusDTO.getFanStatus().getPower()) ? 1 : 0;
-        Device device = new Device();
-        device.setId(1L);
-        device.setStatus(status);
+    public void updateDeviceStatus(Device device) {
         efanMapper.updateById(device);
     }
 
     private void sendFanCommand(int speed) {
         String payload = JSON.toJSONString(new FanCommand(speed));
+        log.info("准备发送的MQTT消息: {}", payload);
         Message<String> message = MessageBuilder
                 .withPayload(payload)
-                .setHeader(MqttHeaders.TOPIC, FAN_CONTROL_TOPIC)
+                .setHeader(MqttHeaders.TOPIC, fanControlTopic)
                 .build();
-        mqttMessageHandler.handleMessage(message);
+        boolean success = fanControlChannel.send(message);
+        log.info("MQTT消息发送结果: {}", success ? "成功" : "失败");
     }
 
     private void sendLightCommand(int r, int g, int b) {
         String payload = JSON.toJSONString(new LightCommand(r, g, b));
         Message<String> message = MessageBuilder
                 .withPayload(payload)
-                .setHeader(MqttHeaders.TOPIC, LIGHT_CONTROL_TOPIC)
+                .setHeader(MqttHeaders.TOPIC, rgbControlTopic)
                 .build();
-        mqttMessageHandler.handleMessage(message);
-    }
-
-    private static class FanCommand {
-        private final int speed;
-        public FanCommand(int speed) { this.speed = speed; }
-    }
-
-    private static class LightCommand {
-        private final int r, g, b;
-        public LightCommand(int r, int g, int b) {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-        }
+        boolean success = rgbControlChannel.send(message);
+        log.info("发送RGB控制指令结果: {}", success ? "成功" : "失败");
     }
 }
