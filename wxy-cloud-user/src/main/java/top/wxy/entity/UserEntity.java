@@ -17,11 +17,11 @@ public class UserEntity extends BaseEntity {
     private String password;
     private String phone;
     private String nickname;
+    @TableField("avatar_url")
     private String avatarUrl;
     private Integer status;
     private Long tenantId;
     private Integer role;
-
     @TableField(exist = false)
     private Integer deleted;
 }
