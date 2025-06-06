@@ -1,0 +1,961 @@
+2025-06-06 12:47:14.630 [main] DEBUG o.s.cloud.gateway.config.GatewayProperties - Routes supplied from Gateway Properties: [RouteDefinition{id='wxy-cloud-admin', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/share-admin-api/**}}], filters=[], uri=lb://wxy-cloud-admin, order=1, metadata={}}, RouteDefinition{id='wxy-cloud-user', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/user/**}}], filters=[FilterDefinition{name='StripPrefix', args={_genkey_0=1}}], uri=lb://wxy-cloud-user, order=2, metadata={}}, RouteDefinition{id='wxy-cloud-content', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/content/**}}], filters=[FilterDefinition{name='StripPrefix', args={_genkey_0=1}}], uri=lb://wxy-cloud-content, order=3, metadata={}}, RouteDefinition{id='wxy-cloud-iot', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/iot/**}}], filters=[FilterDefinition{name='StripPrefix', args={_genkey_0=1}}], uri=lb://wxy-cloud-iot, order=4, metadata={}}]
+2025-06-06 12:47:14.783 [main] DEBUG o.s.c.g.f.f.cache.LocalResponseCacheProperties - No TTL configuration found. Default TTL will be applied for cache entries: PT5M minutes
+2025-06-06 12:47:18.915 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:47:18.915 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:47:18.931 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:18.931 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:18.937 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:47:18.937 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:47:18.938 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:47:18.938 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:47:18.939 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:18.939 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:18.939 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:47:18.939 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:47:18.939 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:47:18.939 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:47:18.940 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:47:18.940 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:47:18.940 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:47:18.940 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:47:18.940 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:18.940 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:18.942 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:47:18.942 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:47:18.942 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:47:18.943 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:47:18.943 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:18.943 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:18.943 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:47:18.943 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:47:18.943 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:47:18.944 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:47:18.944 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:18.944 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:18.944 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:47:18.945 [boundedElastic-3] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:47:18.969 [boundedElastic-4] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:47:19.009 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:47:19.010 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:19.010 [boundedElastic-6] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:47:19.010 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:47:19.010 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:47:19.011 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:19.011 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:47:19.011 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:47:19.012 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:47:19.012 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:47:19.012 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:19.012 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:47:19.012 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:47:19.013 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:19.013 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:47:19.013 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:47:19.014 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:19.014 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:47:19.018 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:47:19.018 [boundedElastic-5] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:47:19.019 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:19.020 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:47:19.020 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:47:19.020 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:19.021 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:47:19.021 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:47:19.021 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:47:19.021 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:47:19.021 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:19.022 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:47:19.022 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:47:19.023 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:19.023 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:47:19.023 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:47:19.023 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:19.024 [boundedElastic-7] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:47:49.067 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:47:49.079 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:49.084 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:47:49.085 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:47:49.090 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:47:49.091 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:47:49.092 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:47:49.092 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:47:49.095 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:47:49.095 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:47:49.096 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:49.097 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:47:49.098 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:47:49.099 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:49.101 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:47:49.103 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:47:49.105 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:47:49.110 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:48:19.203 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:48:19.204 [boundedElastic-4] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:48:19.207 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:48:19.211 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:48:19.212 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:48:19.214 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:48:19.217 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:48:19.217 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:48:19.226 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:48:19.226 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:48:19.227 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:48:19.236 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:48:19.237 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:48:19.243 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:48:19.246 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:48:19.247 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:48:19.258 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:48:19.260 [boundedElastic-5] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:48:49.276 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:48:49.277 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:48:49.278 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:48:49.278 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:48:49.278 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:48:49.278 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:48:49.278 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:48:49.280 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:48:49.280 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:48:49.280 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:48:49.281 [boundedElastic-5] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:48:49.281 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:48:49.281 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:48:49.281 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:48:49.282 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:48:49.282 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:48:49.283 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:48:49.284 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:49:19.344 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:49:19.353 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:49:19.354 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:49:19.355 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:49:19.355 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:49:19.356 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:49:19.356 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:49:19.357 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:49:19.357 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:49:19.357 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:49:19.358 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:49:19.358 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:49:19.359 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:49:19.359 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:49:19.359 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:49:19.359 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:49:19.360 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:49:19.360 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:49:49.392 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:49:49.392 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:49:49.393 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:49:49.394 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:49:49.394 [boundedElastic-6] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:49:49.395 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:49:49.395 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:49:49.395 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:49:49.396 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:49:49.396 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:49:49.397 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:49:49.397 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:49:49.398 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:49:49.399 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:49:49.399 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:49:49.400 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:49:49.400 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:49:49.401 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:50:19.475 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:50:19.477 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:50:19.477 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:50:19.478 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:50:19.478 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:50:19.479 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:50:19.479 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:50:19.479 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:50:19.480 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:50:19.480 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:50:19.481 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:50:19.481 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:50:19.481 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:50:19.482 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:50:19.483 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:50:19.483 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:50:19.483 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:50:19.484 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:50:49.524 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:50:49.525 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:50:49.526 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:50:49.527 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:50:49.527 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:50:49.529 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:50:49.530 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:50:49.530 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:50:49.531 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:50:49.531 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:50:49.532 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:50:49.532 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:50:49.532 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:50:49.533 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:50:49.534 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:50:49.534 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:50:49.535 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:50:49.536 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:51:19.591 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:51:19.591 [boundedElastic-9] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:51:19.592 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:51:19.593 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:51:19.593 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:51:19.595 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:51:19.597 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:51:19.597 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:51:19.598 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:51:19.598 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:51:19.599 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:51:19.600 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:51:19.600 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:51:19.601 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:51:19.602 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:51:19.602 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:51:19.602 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:51:19.603 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:51:49.883 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:51:49.883 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:51:49.884 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:51:49.884 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:51:49.884 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:51:49.884 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:51:49.885 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:51:49.885 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:51:49.885 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:51:49.885 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:51:49.886 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:51:49.886 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:51:49.886 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:51:49.886 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:51:49.887 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:51:49.887 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:51:49.887 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:51:49.887 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:52:19.933 [boundedElastic-8] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:52:19.935 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:52:19.937 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:52:19.939 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:52:19.940 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:52:19.941 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:52:19.942 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:52:19.942 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:52:19.944 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:52:19.944 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:52:19.946 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:52:19.947 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:52:19.948 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:52:19.950 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:52:19.951 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:52:19.951 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:52:19.952 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:52:19.953 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:52:49.982 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:52:49.982 [boundedElastic-10] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:52:49.983 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:52:49.984 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:52:49.984 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:52:49.985 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:52:49.986 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:52:49.986 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:52:49.987 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:52:49.987 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:52:49.988 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:52:49.989 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:52:49.989 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:52:49.989 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:52:49.990 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:52:49.990 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:52:49.990 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:52:49.991 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:53:20.035 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:53:20.036 [boundedElastic-4] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 6
+2025-06-06 12:53:20.037 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:53:20.039 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:53:20.039 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:53:20.040 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:53:20.041 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:53:20.041 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:53:20.042 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:53:20.042 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:53:20.043 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:53:20.043 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:53:20.043 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:53:20.044 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:53:20.045 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:53:20.045 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:53:20.046 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:53:20.047 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:53:50.103 [boundedElastic-11] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:53:50.114 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:53:50.115 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:53:50.115 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:53:50.116 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:53:50.116 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:53:50.116 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:53:50.116 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:53:50.117 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:53:50.117 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:53:50.117 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:53:50.117 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:53:50.117 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:53:50.117 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:53:50.118 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:53:50.118 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:53:50.119 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:53:50.119 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:53:50.119 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:53:50.120 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:53:50.121 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:54:20.128 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:54:20.128 [boundedElastic-8] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:54:20.130 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:54:20.131 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:54:20.131 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:54:20.133 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:54:20.134 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:54:20.134 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:54:20.135 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:54:20.136 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:54:20.136 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:54:20.138 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:54:20.138 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:54:20.139 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:54:20.140 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:54:20.140 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:54:20.141 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:54:20.142 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:54:20.142 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:54:20.144 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:54:20.145 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:54:50.182 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:54:50.182 [boundedElastic-13] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:54:50.183 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:54:50.183 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:54:50.183 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:54:50.184 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:54:50.184 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:54:50.184 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:54:50.185 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:54:50.185 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:54:50.185 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:54:50.186 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:54:50.186 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:54:50.186 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:54:50.186 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:54:50.186 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:54:50.187 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:54:50.187 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:54:50.187 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:54:50.187 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:54:50.188 [boundedElastic-12] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:55:20.222 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:55:20.223 [boundedElastic-11] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:55:20.224 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:55:20.224 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:55:20.225 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:55:20.225 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:55:20.226 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:55:20.226 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:55:20.226 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:55:20.227 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:55:20.227 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:55:20.227 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:55:20.227 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:55:20.227 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:55:20.228 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:55:20.228 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:55:20.228 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:55:20.229 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:55:20.229 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:55:20.229 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:55:20.229 [boundedElastic-4] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:55:50.295 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:55:50.295 [boundedElastic-8] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:55:50.295 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:55:50.297 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:55:50.297 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:55:50.297 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:55:50.298 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:55:50.298 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:55:50.298 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:55:50.299 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:55:50.299 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:55:50.300 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:55:50.300 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:55:50.301 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:55:50.301 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:55:50.301 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:55:50.301 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:55:50.302 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:55:50.302 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:55:50.302 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:55:50.303 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:56:20.337 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:56:20.337 [boundedElastic-12] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:56:20.338 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:56:20.339 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:56:20.339 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:56:20.340 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:56:20.340 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:56:20.340 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:56:20.340 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:56:20.341 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:56:20.341 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:56:20.341 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:56:20.341 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:56:20.341 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:56:20.341 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:56:20.342 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:56:20.342 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:56:20.342 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:56:20.342 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:56:20.342 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:56:20.343 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:56:50.380 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:56:50.381 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:56:50.383 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:56:50.383 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:56:50.383 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:56:50.384 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:56:50.384 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:56:50.385 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:56:50.386 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:56:50.386 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:56:50.386 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:56:50.387 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:56:50.387 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:56:50.387 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:56:50.387 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:56:50.387 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:56:50.388 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:56:50.388 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:56:50.388 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:56:50.388 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:56:50.388 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:57:20.421 [boundedElastic-14] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:57:20.421 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:57:20.423 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:57:20.423 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:57:20.423 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:57:20.423 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:57:20.423 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:57:20.423 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:57:20.425 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:57:20.425 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:57:20.425 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:57:20.426 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:57:20.426 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:57:20.426 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:57:20.427 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:57:20.427 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:57:20.427 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:57:20.427 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:57:20.428 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:57:20.428 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:57:20.428 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:57:50.459 [boundedElastic-15] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:57:50.460 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:57:50.460 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:57:50.460 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:57:50.460 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:57:50.461 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:57:50.461 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:57:50.461 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:57:50.461 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:57:50.462 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:57:50.463 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:57:50.463 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:57:50.463 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:57:50.463 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:57:50.464 [boundedElastic-8] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:58:20.514 [boundedElastic-14] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:58:20.514 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:58:20.515 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:58:20.515 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:58:20.515 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:58:20.517 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:58:20.517 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:58:20.518 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:58:20.518 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:58:20.519 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:58:20.519 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:58:20.519 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:58:20.519 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:58:20.520 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:58:20.520 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:58:20.520 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:58:20.520 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:58:20.521 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:58:20.521 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:58:20.522 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:58:20.522 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:58:50.549 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:58:50.550 [boundedElastic-16] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:58:50.550 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:58:50.550 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:58:50.550 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:58:50.550 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:58:50.550 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:58:50.552 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:58:50.552 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:58:50.553 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:58:50.553 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:58:50.553 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:58:50.553 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:58:50.553 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:58:50.554 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:58:50.554 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:58:50.554 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:58:50.554 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:58:50.554 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:58:50.554 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:58:50.555 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:59:20.590 [boundedElastic-8] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:59:20.590 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:59:20.591 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:59:20.592 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:59:20.592 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:59:20.592 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:59:20.592 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:59:20.593 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:59:20.593 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:59:20.594 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:59:20.594 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:59:20.594 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:59:20.594 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:59:20.595 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:59:20.595 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:59:20.595 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:59:20.596 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:59:20.596 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:59:20.596 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:59:20.597 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:59:20.597 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 12:59:50.638 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 12:59:50.638 [boundedElastic-12] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 12:59:50.639 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:59:50.639 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 12:59:50.640 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 12:59:50.640 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:59:50.640 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 12:59:50.640 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 12:59:50.641 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 12:59:50.641 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 12:59:50.641 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 12:59:50.642 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 12:59:50.642 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 12:59:50.642 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:59:50.642 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 12:59:50.643 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 12:59:50.643 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:59:50.643 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 12:59:50.643 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 12:59:50.643 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 12:59:50.644 [boundedElastic-15] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:00:20.708 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:00:20.708 [boundedElastic-12] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:00:20.709 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:00:20.711 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:00:20.711 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:00:20.712 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:00:20.712 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:00:20.712 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:00:20.713 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:00:20.713 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:00:20.713 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:00:20.714 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:00:20.714 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:00:20.714 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:00:20.715 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:00:20.715 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:00:20.715 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:00:20.716 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:00:20.716 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:00:20.716 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:00:20.717 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:00:50.748 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:00:50.749 [boundedElastic-14] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:00:50.749 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:00:50.750 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:00:50.750 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:00:50.750 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:00:50.751 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:00:50.751 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:00:50.751 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:00:50.751 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:00:50.751 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:00:50.751 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:00:50.752 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:00:50.752 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:00:50.752 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:00:50.752 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:00:50.752 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:00:50.752 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:00:50.753 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:00:50.753 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:00:50.753 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:01:20.791 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:01:20.791 [boundedElastic-6] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:01:20.792 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:01:20.793 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:01:20.793 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:01:20.794 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:01:20.794 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:01:20.794 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:01:20.795 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:01:20.795 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:01:20.796 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:01:20.796 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:01:20.796 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:01:20.796 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:01:20.797 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:01:20.797 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:01:20.797 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:01:20.797 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:01:20.797 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:01:20.797 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:01:20.798 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:01:50.858 [boundedElastic-17] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:01:50.858 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:01:50.859 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:01:50.859 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:01:50.859 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:01:50.860 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:01:50.860 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:01:50.860 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:01:50.860 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:01:50.861 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:01:50.861 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:01:50.861 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:01:50.861 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:01:50.862 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:01:50.862 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:01:50.862 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:01:50.863 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:01:50.863 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:01:50.864 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:01:50.864 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:01:50.865 [boundedElastic-18] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:02:20.926 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:02:20.926 [boundedElastic-18] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:02:20.927 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:02:20.928 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:02:20.928 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:02:20.929 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:02:20.930 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:02:20.930 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:02:20.930 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:02:20.931 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:02:20.931 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:02:20.932 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:02:20.932 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:02:20.933 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:02:20.933 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:02:20.933 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:02:20.934 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:02:20.934 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:02:20.934 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:02:20.935 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:02:20.935 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:02:50.962 [boundedElastic-10] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:02:50.962 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:02:50.963 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:02:50.964 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:02:50.965 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:02:50.965 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:02:50.965 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:02:50.965 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:02:50.965 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:02:50.965 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:02:50.966 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:02:50.966 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:02:50.966 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:02:50.966 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:03:21.005 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:03:21.005 [boundedElastic-20] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:03:21.006 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:03:21.007 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:03:21.007 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:03:21.007 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:03:21.007 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:03:21.008 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:03:21.008 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:03:21.008 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:03:21.008 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:03:21.009 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:03:21.009 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:03:21.009 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:03:21.009 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:03:21.009 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:03:21.009 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:03:21.010 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:03:21.010 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:03:21.010 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:03:21.010 [boundedElastic-19] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:03:51.059 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:03:51.059 [boundedElastic-6] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:03:51.059 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:03:51.060 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:03:51.060 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:03:51.060 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:03:51.060 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:03:51.061 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:03:51.062 [boundedElastic-1] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:04:21.095 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:04:21.095 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:04:21.096 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:04:21.096 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:04:21.096 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:04:21.097 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:04:21.098 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:04:21.098 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:04:21.098 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:04:21.098 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:04:21.099 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:04:21.099 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:04:21.099 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:04:21.099 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:04:21.099 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:04:21.099 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:04:21.100 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:04:21.100 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:04:21.100 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:04:21.100 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:04:21.100 [boundedElastic-20] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:04:51.133 [boundedElastic-19] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:04:51.133 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:04:51.134 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:04:51.134 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:04:51.134 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:04:51.135 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:04:51.135 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:04:51.135 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:04:51.136 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:04:51.136 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:04:51.136 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:04:51.136 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:04:51.136 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:04:51.137 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:04:51.137 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:04:51.137 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:04:51.137 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:04:51.138 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:04:51.138 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:04:51.138 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:04:51.139 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:05:21.173 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:05:21.173 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:05:21.174 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:05:21.174 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:05:21.174 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:05:21.174 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:05:21.174 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:05:21.174 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:05:21.175 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:05:21.175 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:05:21.175 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:05:21.176 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:05:21.176 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:05:21.176 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:05:21.176 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:05:21.176 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:05:21.176 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:05:21.177 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:05:21.177 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:05:21.177 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:05:21.177 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:05:51.211 [boundedElastic-6] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:05:51.212 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:05:51.212 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:05:51.213 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:05:51.213 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:05:51.214 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:05:51.214 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:05:51.214 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:05:51.215 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:05:51.216 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:05:51.216 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:05:51.216 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:05:51.217 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:05:51.217 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:05:51.218 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:05:51.218 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:05:51.218 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:05:51.220 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:05:51.220 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:05:51.220 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:05:51.221 [boundedElastic-21] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:06:21.252 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:06:21.252 [boundedElastic-20] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:06:21.253 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:06:21.253 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:06:21.253 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:06:21.253 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:06:21.254 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:06:21.254 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:06:21.254 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:06:21.255 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:06:21.255 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:06:21.255 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:06:21.255 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:06:21.255 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:06:21.256 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:06:21.256 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:06:21.256 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:06:21.256 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:06:21.256 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:06:21.256 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:06:21.257 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:06:51.289 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:06:51.289 [boundedElastic-1] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:06:51.290 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:06:51.290 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:06:51.290 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:06:51.290 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:06:51.291 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:06:51.291 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:06:51.291 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:06:51.291 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:06:51.291 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:06:51.292 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:06:51.292 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:06:51.292 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:06:51.292 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:06:51.292 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:06:51.292 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:06:51.293 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:06:51.293 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:06:51.293 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:06:51.294 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:07:21.326 [boundedElastic-20] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:07:21.326 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:07:21.327 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:07:21.328 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:07:21.328 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:07:21.328 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:07:21.328 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:07:21.328 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:07:21.329 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:07:21.329 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:07:21.329 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:07:21.329 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:07:21.329 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:07:21.329 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:07:21.330 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:07:21.330 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:07:21.330 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:07:21.330 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:07:21.330 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:07:21.331 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:07:21.331 [boundedElastic-10] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:07:51.363 [boundedElastic-19] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:07:51.363 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:07:51.364 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:07:51.364 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:07:51.364 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:07:51.365 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:07:51.365 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:07:51.365 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:07:51.365 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:07:51.366 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:07:51.366 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:07:51.366 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:07:51.366 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:07:51.366 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:07:51.367 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:07:51.367 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:07:51.367 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:07:51.367 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:07:51.367 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:07:51.367 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:07:51.368 [boundedElastic-22] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:08:21.403 [boundedElastic-22] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:08:21.403 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:08:21.404 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:08:21.404 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:08:21.404 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:08:21.404 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:08:21.405 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:08:21.406 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:08:21.406 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:08:21.406 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:08:21.406 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:08:21.406 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:08:21.406 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:08:21.407 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:08:21.407 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:08:51.440 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:08:51.440 [boundedElastic-19] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:08:51.441 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:08:51.441 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:08:51.441 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:08:51.441 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:08:51.442 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:08:51.443 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot
+2025-06-06 13:09:21.482 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying {pattern=/wxy-cloud-admin/**} to Path
+2025-06-06 13:09:21.482 [boundedElastic-22] DEBUG o.s.cloud.gateway.filter.GatewayMetricsFilter - New routes count: 7
+2025-06-06 13:09:21.483 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-admin applying filter {regexp=/wxy-cloud-admin/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:09:21.484 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-admin
+2025-06-06 13:09:21.484 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying {pattern=/wxy-cloud-user/**} to Path
+2025-06-06 13:09:21.484 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-user applying filter {regexp=/wxy-cloud-user/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:09:21.484 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-user
+2025-06-06 13:09:21.484 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying {pattern=/wxy-cloud-gateway/**} to Path
+2025-06-06 13:09:21.484 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition ReactiveCompositeDiscoveryClient_wxy-cloud-gateway applying filter {regexp=/wxy-cloud-gateway/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2025-06-06 13:09:21.486 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: ReactiveCompositeDiscoveryClient_wxy-cloud-gateway
+2025-06-06 13:09:21.486 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-admin applying {_genkey_0=/share-admin-api/**} to Path
+2025-06-06 13:09:21.486 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-admin
+2025-06-06 13:09:21.486 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying {_genkey_0=/user/**} to Path
+2025-06-06 13:09:21.486 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-user applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:09:21.486 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-user
+2025-06-06 13:09:21.487 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying {_genkey_0=/content/**} to Path
+2025-06-06 13:09:21.487 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-content applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:09:21.487 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-content
+2025-06-06 13:09:21.487 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying {_genkey_0=/iot/**} to Path
+2025-06-06 13:09:21.487 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition wxy-cloud-iot applying filter {_genkey_0=1} to StripPrefix
+2025-06-06 13:09:21.488 [boundedElastic-6] DEBUG o.s.c.gateway.route.RouteDefinitionRouteLocator - RouteDefinition matched: wxy-cloud-iot

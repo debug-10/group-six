@@ -30,6 +30,8 @@ public class UserDetail implements UserDetails {
     private String mobile;
     private Integer status;
     private LocalDateTime createTime;
+    private Long tenantId;  // 新增租户ID
+    private Integer role;   // 新增角色字段
 
     /**
      * 帐户是否过期

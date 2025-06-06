@@ -15,12 +15,15 @@ public interface SysManagerMapper extends BaseMapper<SysManager> {
     default SysManager getByUsername(String username) {
         return this.selectOne(new LambdaQueryWrapper<SysManager>()
                 .eq(SysManager::getUsername, username)
-                .eq(SysManager::getDeleteFlag, 0)  // 只查询未删除的用户
-                .select(SysManager::getPkId, 
-                        SysManager::getUsername, 
-                        SysManager::getPassword,  // 确保选择密码字段
-                        SysManager::getAvatar,
-                        SysManager::getSuperAdmin,
+                // 删除 deleteFlag 条件，因为新表结构中没有这个字段
+                .select(SysManager::getId,
+                        SysManager::getUsername,
+                        SysManager::getPassword,
+                        SysManager::getAvatarUrl,
+                        SysManager::getPhone,
+                        SysManager::getNickname,
+                        SysManager::getTenantId,
+                        SysManager::getRole,
                         SysManager::getStatus));
     }
 

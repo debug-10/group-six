@@ -15,5 +15,5 @@ public class UserQuery extends Query {
     @Schema(description = "⽤户名")
     private String username;
     @Schema(description = "⼿机号")
-    private String mobile;
+    private String phone;
 }

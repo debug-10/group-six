@@ -56,27 +56,26 @@ public class AuthServiceImpl implements AuthService {
     }
     @Override
     public MobileLoginVO loginByMobile(MobileLoginDTO login) {
-        UserVO userVO = userService.getByMobile(login.getMobile());
+        UserVO userVO = userService.getByPhone(login.getMobile());
         if (userVO == null) {
             UserEntity entity = UserConvert.INSTANCE.convert(login);
             entity.setUsername(login.getMobile());
             entity.setPassword(passwordEncoder.encode("123456"));
             entity.setNickname("新⽤户");
-            entity.setAvatar("https://my-wxy-bucket.oss-cn-nanjing.aliyuncs.com/picture/liang.jpg");
+            entity.setAvatarUrl("https://my-wxy-bucket.oss-cn-nanjing.aliyuncs.com/picture/liang.jpg");
+            entity.setRole(3);
+            entity.setPhone(login.getMobile());
             userService.save(entity);
-            // 重新获取用户信息
-            userVO = userService.getByMobile(login.getMobile());
+            userVO = userService.getByPhone(login.getMobile());
         }
         Authentication authentication;
         try {
-            // ⽤户认证
             authentication = authenticationManager.authenticate(new MobileAuthenticationToken(login.getMobile(), login.getCode()));
         } catch (BadCredentialsException e) {
             throw new ServerException("⼿机号或验证码错误");
         }
         // ⽤户信息
         UserDetail userDetail = (UserDetail) authentication.getPrincipal();
-        // ⽣成 accessToken
         String accessToken = JwtUtil.createToken(userDetail.getId());
         // 保存⽤户信息到缓存
         tokenStoreCache.saveUser(accessToken, userDetail);
@@ -84,7 +83,7 @@ public class AuthServiceImpl implements AuthService {
         mobileLoginVO.setId(userDetail.getId());
         mobileLoginVO.setAccessToken(accessToken);
         if (userVO != null) {
-            mobileLoginVO.setMobile(userVO.getMobile());
+            mobileLoginVO.setMobile(userVO.getPhone());
         }
         return mobileLoginVO;
     }

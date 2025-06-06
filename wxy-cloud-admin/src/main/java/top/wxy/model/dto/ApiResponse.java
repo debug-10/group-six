@@ -19,4 +19,16 @@ public class ApiResponse<T> {
     public static <T> ApiResponse<T> success(String message) {
         return success(message, null);
     }
+
+    public static <T> ApiResponse<T> error(String message) {
+        return error(message, null);
+    }
+
+    public static <T> ApiResponse<T> error(String message, T data) {
+        ApiResponse<T> response = new ApiResponse<>();
+        response.setCode(400);
+        response.setMessage(message);
+        response.setData(data);
+        return response;
+    }
 }

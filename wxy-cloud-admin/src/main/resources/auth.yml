@@ -10,4 +10,5 @@ auth:
     - /swagger-ui.html
     - /swagger-ui/**
     - /doc.html
+    - /api/devices/page
     - /

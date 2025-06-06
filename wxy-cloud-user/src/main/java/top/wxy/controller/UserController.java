@@ -63,6 +63,6 @@ public class UserController {
     @GetMapping("getUserByMobile" )
     @Operation(summary = "根据⼿机号获取⽤户" )
     public Result<UserVO> getUserByMobile(String mobile) {
-        return Result.ok(sysUserService.getByMobile(mobile));
+        return Result.ok(sysUserService.getByPhone(mobile));
     }
 }

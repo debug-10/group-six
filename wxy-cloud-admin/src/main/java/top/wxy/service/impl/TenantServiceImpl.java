@@ -20,6 +20,15 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private TenantMapper tenantMapper;
+
+    @Override
+    public Tenant insert(Tenant entity) {
+        tenantMapper.insert(entity); // ✅ 这是实例方法，OK
+        return entity;
+    }
+
     @Override
     public Tenant saveTenant(Tenant entity) {
         // 验证 adminUsername 是否存在
@@ -27,12 +36,12 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
         userQuery.eq("username", entity.getAdminUsername());
         User user = userMapper.selectOne(userQuery);
         if (user == null) {
-            throw new RuntimeException("Admin username " + entity.getAdminUsername() + " does not exist in t_user table");
+            throw new RuntimeException("Admin username " + entity.getAdminUsername() + " does not exist");
         }
 
-        System.out.println("Before saving tenant: " + entity);
-        this.save(entity);
-        System.out.println("After saving tenant, tenantId: " + entity.getTenantId());
+        System.out.println("Before insert: " + entity);
+        this.insert(entity); // ✅ 调用你自定义的 insert 方法
+        System.out.println("After insert, tenantId: " + entity.getTenantId());
         return entity;
     }
 
