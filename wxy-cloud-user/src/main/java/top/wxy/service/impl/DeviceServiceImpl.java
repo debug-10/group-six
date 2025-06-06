@@ -65,8 +65,8 @@ public class DeviceServiceImpl implements DeviceService {
         
         for (UserDeviceVO userDeviceVO : result) {
             List<DeviceEntity> devices = deviceDao.getByType(userDeviceVO.getType());
-            List<DeviceVO> deviceVOs = DeviceConvert.INSTANCE.convertList(devices);
-            userDeviceVO.setDevices(deviceVOs);
+            List<DeviceVO> deviceVO = DeviceConvert.INSTANCE.convertList(devices);
+            userDeviceVO.setDevices(deviceVO);
         }
         
         return result;
