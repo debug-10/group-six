@@ -61,7 +61,7 @@ public class AuthenticationTokenFilter extends top.wxy.framework.security.filter
 
         // 转换为 ManagerDetail
         ManagerDetail managerDetail = new ManagerDetail();
-        managerDetail.setPkId(userDetail.getId().intValue());
+        managerDetail.setId(userDetail.getId());
         managerDetail.setUsername(userDetail.getUsername());
         managerDetail.setPassword(userDetail.getPassword());
         managerDetail.setEnabled(userDetail.isEnabled());

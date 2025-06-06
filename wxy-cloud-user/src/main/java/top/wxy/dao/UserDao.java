@@ -17,8 +17,7 @@ public interface UserDao extends BaseDao<UserEntity> {
     default UserEntity getByUsername(String username) {
         return this.selectOne(new QueryWrapper<UserEntity>().eq("username", username));
     }
-
-    default UserEntity getByMobile(String mobile) {
-        return this.selectOne(new QueryWrapper<UserEntity>().eq("mobile", mobile));
+    default UserEntity getByPhone(String phone) {
+        return this.selectOne(new QueryWrapper<UserEntity>().eq("phone", phone));
     }
 }

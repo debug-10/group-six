@@ -1,5 +1,6 @@
 package top.wxy.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,10 +15,13 @@ import top.wxy.framework.mybatis.entity.BaseEntity;
 public class UserEntity extends BaseEntity {
     private String username;
     private String password;
-    private String mobile;
+    private String phone;
     private String nickname;
-    private String avatar;
-    private String email;
-    private Integer gender;
+    @TableField("avatar_url")
+    private String avatarUrl;
     private Integer status;
+    private Long tenantId;
+    private Integer role;
+    @TableField(exist = false)
+    private Integer deleted;
 }

@@ -11,7 +11,8 @@ import lombok.Data;
 @Schema(description = "修改管理员密码")
 public class ChangePasswordQuery {
     @Schema(description = "主键")
-    private Integer pkId;
+    private Long id; // 修改：Integer Id -> Long id，并且字段名首字母小写
+    
     @Schema(description = "密码")
     @NotBlank(message = "密码不能为空")
     private String password;
