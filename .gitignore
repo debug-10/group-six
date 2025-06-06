@@ -1,6 +1,5 @@
 # 忽略 logs/debug.log 文件
-logs/debug.log
-
+logs/
 # 其他忽略规则
 target/
 !.mvn/wrapper/maven-wrapper.jar
