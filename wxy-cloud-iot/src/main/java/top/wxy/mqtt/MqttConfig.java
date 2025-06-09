@@ -29,7 +29,6 @@ public class MqttConfig {
     private String username;
     private String password;
     private String clientId;
-
     // 直接通过 @Value 注入主题配置（无需在类中定义字段）
     @Value("${mqtt.fan-control-topic}")
     private String fanControlTopic; // 风扇控制主题（从配置文件获取）
