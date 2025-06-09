@@ -13,9 +13,8 @@ public class MessageListDTO {
     private String title;
     private String content;
     private Integer isTop;
-//    private LocalDateTime createTime; // 与实体类保持一致
-//    private LocalDateTime updateTime;
 
-    private String createTime; // 改为 String 类型
+
+    private String createTime;
     private String updateTime;
 }

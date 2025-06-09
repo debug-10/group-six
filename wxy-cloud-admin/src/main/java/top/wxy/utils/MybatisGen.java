@@ -28,17 +28,16 @@ public class MybatisGen {
         outputFileStringMap.put(OutputFile.xml, pathXml);
         FastAutoGenerator.create("jdbc:mysql://localhost:3306/db_common", "root", "123456")
                 .globalConfig(builder -> {
-                    builder.author("ycshang").enableSwagger(); // 设置作者// 开启 swagger 模式
+                    builder.author("ycshang").enableSwagger();
 
                 })
                 .packageConfig(builder -> {
-                    builder.parent("com") // 设置父包名
-                            .moduleName("common") // 设置父包模块名
+                    builder.parent("com")
+                            .moduleName("common")
                             .pathInfo(outputFileStringMap);
-                         // 设置mapperXml生成路径
                 })
                 .strategyConfig((scanner, builder) -> {
-                    builder.addInclude(getTables(scanner.apply("请输入表名，多个英文逗号分隔？所有输入 all"))) // 设置需要生成的表名
+                    builder.addInclude(getTables(scanner.apply("请输入表名，多个英文逗号分隔？所有输入 all")))
                             .addTablePrefix("t_","sys_")
                             .entityBuilder()
                             .disableSerialVersionUID()

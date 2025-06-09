@@ -12,6 +12,6 @@ public class MessageQuery {
     private String deviceId;
     private Integer type;
     private Integer isTop;
-    private LocalDateTime createTime; // 与实体类保持一致
+    private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }

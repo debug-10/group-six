@@ -48,17 +48,31 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao, UserEntity> implem
     }
 
     @Override
-    public void update(UserDTO dto) {
-        UserEntity entity = UserConvert.INSTANCE.convert(dto);
-        entity.setId(SecurityUser.getUser().getId());
-        if (dto.getPassword() != null) {
-            entity.setPassword(passwordEncoder.encode(dto.getPassword()));
-        }
-        // 更新⽤户
-        updateById(entity);
-        // 删除⽤户缓存
-        tokenStoreCache.deleteUser(TokenUtils.getAccessToken());
+public void update(UserDTO dto) {
+    // 先获取当前用户实体
+    UserEntity currentEntity = baseMapper.getById(SecurityUser.getUser().getId());
+    if (currentEntity == null) {
+        throw new ServerException("用户不存在");
     }
+    
+    // 只更新非空字段
+    UserEntity entity = UserConvert.INSTANCE.convert(dto);
+    entity.setId(SecurityUser.getUser().getId());
+    
+    // 如果头像URL为空，保留原来的值
+    if (entity.getAvatarUrl() == null) {
+        entity.setAvatarUrl(currentEntity.getAvatarUrl());
+    }
+    
+    if (dto.getPassword() != null) {
+        entity.setPassword(passwordEncoder.encode(dto.getPassword()));
+    }
+    
+    // 更新用户
+    updateById(entity);
+    // 删除用户缓存
+    tokenStoreCache.deleteUser(TokenUtils.getAccessToken());
+}
 
     @Override
     public UserVO getByPhone(String mobile) {
