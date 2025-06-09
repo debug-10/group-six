@@ -1,5 +1,7 @@
 package top.wxy.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@Tag(name = "天气模块")
 public class WeatherController {
 
     private final OpenWeatherConfig config;
@@ -21,6 +24,7 @@ public class WeatherController {
     }
 
     @GetMapping("/weather")
+    @Operation(summary = "获取天气")
     public Object getWeather(
             @RequestParam(required = true) String city,  // 必须传递城市参数
             @RequestParam(name = "lang", defaultValue = "en") String lang  // 可选语言参数（默认英文）

@@ -9,6 +9,7 @@ auth:
     - /api/user/getUserById
     - /api/device/add
     - /api/device/list
+    - /weather
     # 文档相关白名单
     - /actuator/**
     - /v3/api-docs/**
