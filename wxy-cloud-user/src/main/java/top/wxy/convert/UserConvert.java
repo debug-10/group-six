@@ -1,6 +1,7 @@
 package top.wxy.convert;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import top.wxy.dto.MobileLoginDTO;
 import top.wxy.dto.UserDTO;
