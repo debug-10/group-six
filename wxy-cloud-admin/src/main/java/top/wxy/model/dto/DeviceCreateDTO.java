@@ -16,5 +16,5 @@ public class DeviceCreateDTO implements Serializable {
     private Integer status;
     private Float temperature;
     private Float humidity;
-    private String location; // 新增字段
+    private String location;
 }

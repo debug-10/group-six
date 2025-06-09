@@ -61,7 +61,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         IPage<UserDTO> userDTOPage = userPage.convert(user -> {
             UserDTO userDTO = new UserDTO();
             BeanUtils.copyProperties(user, userDTO);
-            userDTO.setPassword(null); // 避免返回敏感字段
+            userDTO.setPassword(null);
             return userDTO;
         });
 

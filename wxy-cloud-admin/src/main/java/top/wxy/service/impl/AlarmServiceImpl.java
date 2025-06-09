@@ -26,7 +26,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
 
     @Override
     public Alarm insert(Alarm entity) {
-        alarmMapper.insert(entity); // ✅ 这是实例方法，OK
+        alarmMapper.insert(entity);
         return entity;
     }
 
@@ -34,7 +34,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
     public Alarm saveAlarm(Alarm entity) {
         // 验证 deviceId 是否存在
         QueryWrapper<Device> deviceQuery = new QueryWrapper<>();
-        deviceQuery.eq("id", entity.getDeviceId()); // 使用 id 字段
+        deviceQuery.eq("id", entity.getDeviceId());
         Device device = deviceMapper.selectOne(deviceQuery);
         if (device == null) {
             throw new RuntimeException("Device ID " + entity.getDeviceId() + " does not exist in t_device table");
@@ -53,7 +53,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
         alarm.setType(dto.getType());
         alarm.setLevel(dto.getLevel());
         alarm.setMessage(dto.getMessage());
-        alarm.setStatus(0); // 默认未处理
+        alarm.setStatus(0);
         return alarm;
     }
 
@@ -101,7 +101,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
         if (alarm == null) {
             throw new RuntimeException("Alarm not found with id: " + id);
         }
-        this.removeById(id); // 物理删除
+        this.removeById(id);
     }
 
     private AlarmListDTO convertToListDTO(Alarm alarm) {
