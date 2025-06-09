@@ -42,22 +42,27 @@ public class EfanServiceImpl implements EfanService {
     @Resource(name = "rgbControlChannel")
     private MessageChannel rgbControlChannel;
 
+    //赋值顺序是r b g!!!!!!
+
     @Override
+    //普通模式128+天蓝色R: 135, G: 206, B: 255
     public void startNormalMode() {
         sendFanCommand(128);
-        sendLightCommand(255, 255, 255);
+        sendLightCommand(135, 255, 206);
     }
 
     @Override
+    //强劲模式255+紫红色R: 255, G: 0, B: 255
     public void startPowerfulMode() {
         sendFanCommand(255);
-        sendLightCommand(255, 0, 0);
+        sendLightCommand(255, 255, 0);
     }
 
     @Override
+    //关闭时0+白奶色R: 255, G: 248, B: 231
     public void turnOff() {
         sendFanCommand(0);
-        sendLightCommand(0, 0, 255); // 补充RGB控制
+        sendLightCommand(255, 231, 248); // 补充RGB控制
     }
 
     @Override
