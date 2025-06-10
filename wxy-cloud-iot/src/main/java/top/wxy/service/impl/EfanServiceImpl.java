@@ -70,6 +70,22 @@ public class EfanServiceImpl implements EfanService {
     public void updateDeviceStatus(Device device) {
         efanMapper.updateById(device);
     }
+    
+    @Override
+    public void setTimer(int minutes) {
+        // 创建带定时参数的命令，不设置speed，或设置为非0值
+        FanCommand command = new FanCommand(128); // 设置为中速，或者不设置speed
+        command.setTimer(minutes);
+        
+        String payload = JSON.toJSONString(command);
+        log.info("准备发送的风扇定时MQTT消息: {}", payload);
+        Message<String> message = MessageBuilder
+                .withPayload(payload)
+                .setHeader(MqttHeaders.TOPIC, fanControlTopic)
+                .build();
+        boolean success = fanControlChannel.send(message);
+        log.info("风扇定时MQTT消息发送结果: {}", success ? "成功" : "失败");
+    }
 
     private void sendFanCommand(int speed) {
         String payload = JSON.toJSONString(new FanCommand(speed));
