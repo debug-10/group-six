@@ -8,6 +8,7 @@ import top.wxy.convert.DeviceConvert;
 import top.wxy.dao.DeviceDao;
 import top.wxy.dao.UserDeviceDao;
 import top.wxy.dto.DeviceAddDTO;
+import top.wxy.dto.DeviceUnbindDTO;
 import top.wxy.entity.DeviceEntity;
 import top.wxy.entity.UserDeviceEntity;
 import top.wxy.framework.common.exception.ServerException;
@@ -36,7 +37,6 @@ public class DeviceServiceImpl implements DeviceService {
     public void addDeviceToUser(DeviceAddDTO dto) {
         Long userId = SecurityUser.getUser().getId();
 
-        // 根据单个device_mac查询设备信息
         DeviceEntity device = deviceDao.selectOne(new QueryWrapper<DeviceEntity>()
                 .eq("device_mac", dto.getDeviceMac()));
 
@@ -48,7 +48,6 @@ public class DeviceServiceImpl implements DeviceService {
             throw new ServerException("您已经绑定了该类型的设备场景");
         }
 
-        // 创建用户设备绑定记录
         UserDeviceEntity userDevice = new UserDeviceEntity();
         userDevice.setUserId(userId);
         userDevice.setType(device.getType());
@@ -58,21 +57,29 @@ public class DeviceServiceImpl implements DeviceService {
     }
     
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void unbindUserDevice(DeviceUnbindDTO dto) {
+        Long userId = SecurityUser.getUser().getId();
+        UserDeviceEntity userDevice = userDeviceDao.getByUserIdAndType(userId, dto.getType());
+        if (userDevice == null) {
+            throw new ServerException("未找到对应类型的设备绑定记录");
+        }
+        userDeviceDao.deleteById(userDevice.getId());
+    }
+    
+    @Override
     public List<UserDeviceVO> getUserDevices() {
         Long userId = SecurityUser.getUser().getId();
 
         List<UserDeviceEntity> userDevices = userDeviceDao.getByUserId(userId);
         List<UserDeviceVO> result = new ArrayList<>();
-        
-        // 手动转换UserDeviceEntity到UserDeviceVO
+
         for (UserDeviceEntity entity : userDevices) {
             UserDeviceVO vo = new UserDeviceVO();
             vo.setId(entity.getId());
             vo.setType(entity.getType());
             vo.setGroupName(entity.getGroupName());
             vo.setBindTime(entity.getBindTime());
-            
-            // 获取并转换设备列表
             List<DeviceEntity> devices = deviceDao.getByType(entity.getType());
             List<DeviceVO> deviceVOs = new ArrayList<>();
             for (DeviceEntity deviceEntity : devices) {
