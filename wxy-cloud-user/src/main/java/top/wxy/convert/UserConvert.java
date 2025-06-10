@@ -23,5 +23,6 @@ public interface UserConvert {
 
     @Mapping(target = "status", expression = "java(entity.getStatus())")
     @Mapping(target = "id", expression = "java(entity.getId())")
+    @Mapping(target = "password", expression = "java(entity.getPassword())")
     UserDetail convertDetail(UserEntity entity);
 }
