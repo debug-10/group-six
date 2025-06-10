@@ -14,7 +14,7 @@ public class WeatherUtils {
     private static final Map<String, String> COUNTRY_CN_MAP = new HashMap<>();
 
     static {
-        // 初始化天气主类映射
+
         WEATHER_MAIN_CN_MAP.put("Thunderstorm", "雷暴");
         WEATHER_MAIN_CN_MAP.put("Drizzle", "毛毛雨");
         WEATHER_MAIN_CN_MAP.put("Rain", "雨");

@@ -18,8 +18,6 @@ spring:
     import:
       - optional:nacos:datasource.yaml
       - optional:nacos:common.yaml
-
-
 openweather:
   api:
     key: f00424a15d59134e025ce1179cb0afdc

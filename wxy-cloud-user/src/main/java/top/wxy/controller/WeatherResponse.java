@@ -14,32 +14,31 @@ import java.time.format.DateTimeFormatter;
 
 // 根响应对象
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)  // 忽略未知字段
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String name;          // 城市名
-    private int cod;              // 状态码（如200成功，404失败）
-    private String message;       // 状态信息（仅失败时返回）
-    private Main main;            // 主要天气数据
-    private Weather[] weather;    // 天气描述数组
-    private Wind wind;            // 风速数据
-    private Clouds clouds;        // 云层数据
-    private Sys sys;              // 系统信息（如国家代码）
-    private long dt;              // 数据时间戳
-    private int id;               // 城市ID
+    private String name;
+    private int cod;
+    private String message;
+    private Main main;
+    private Weather[] weather;
+    private Wind wind;
+    private Clouds clouds;
+    private Sys sys;
+    private long dt;
+    private int id;
 
-    // 新增：中文描述字段
-    private String cityName;          // 中文城市名
-    private String weatherMainCn;     // 天气主类中文
-    private String weatherDescCn;     // 天气描述中文
-    private String dateTimeCn;        // 数据时间中文
-    private String sunriseCn;         // 日出时间中文
-    private String sunsetCn;          // 日落时间中文
+    private String cityName;
+    private String weatherMainCn;
+    private String weatherDescCn;
+    private String dateTimeCn;
+    private String sunriseCn;
+    private String sunsetCn;
 
     public void setName(String name) {
         this.name = name;
-        this.cityName = WeatherUtils.getChineseCityName(name); // 设置中文城市名
+        this.cityName = WeatherUtils.getChineseCityName(name);
     }
 
     public void setWeather(Weather[] weather) {
@@ -73,23 +72,20 @@ public class WeatherResponse implements Serializable {
 
     // 内部类：主要天气数据
     public static class Main {
-        private double temp;          // 温度（℃）
-        private double feels_like;    // 体感温度（℃）
-        private double temp_min;      // 最低温（℃）
-        private double temp_max;      // 最高温（℃）
-        private int pressure;         // 气压（hPa）
-        private int humidity;         // 湿度（%）
-        private double sea_level;     // 海平面气压（hPa，可选）
-        private double grnd_level;    // 地面气压（hPa，可选）
+        private double temp;
+        private double feels_like;
+        private double temp_min;
+        private double temp_max;
+        private int pressure;
+        private int humidity;
+        private double sea_level;
+        private double grnd_level;
 
-        // 无参构造函数（必须）
         public Main() {}
-
-        // Getters and Setters
         public double getTemp() { return temp; }
         public void setTemp(double temp) { this.temp = temp; }
 
-        @JsonProperty("feels_like")  // 明确映射JSON字段名
+        @JsonProperty("feels_like")
         public double getFeelsLike() { return feels_like; }
         public void setFeelsLike(double feels_like) { this.feels_like = feels_like; }
 
@@ -114,8 +110,6 @@ public class WeatherResponse implements Serializable {
         @JsonProperty("grnd_level")
         public double getGrndLevel() { return grnd_level; }
         public void setGrndLevel(double grnd_level) { this.grnd_level = grnd_level; }
-
-        // 新增：带单位的温度显示
         public String getTempWithUnit() {
             return String.format("%.1f℃", temp);
         }
@@ -135,15 +129,13 @@ public class WeatherResponse implements Serializable {
 
     // 内部类：天气描述
     public static class Weather {
-        private int id;               // 天气ID（如800=晴天）
-        private String main;          // 天气主类（如"Clear"）
-        private String description;   // 详细描述（如"clear sky"）
-        private String icon;          // 图标代码（如"01d"）
+        private int id;
+        private String main;
+        private String description;
+        private String icon;
 
-        // 无参构造函数
         public Weather() {}
 
-        // Getters and Setters
         public int getId() { return id; }
         public void setId(int id) { this.id = id; }
         public String getMain() { return main; }
@@ -156,22 +148,18 @@ public class WeatherResponse implements Serializable {
 
     // 内部类：风速数据
     public static class Wind {
-        private double speed;         // 风速（m/s）
-        private double deg;           // 风向（度）
-        private double gust;          // 阵风风速（m/s，可选）
+        private double speed;
+        private double deg;
+        private double gust;
 
-        // 无参构造函数
         public Wind() {}
 
-        // Getters and Setters
         public double getSpeed() { return speed; }
         public void setSpeed(double speed) { this.speed = speed; }
         public double getDeg() { return deg; }
         public void setDeg(double deg) { this.deg = deg; }
         public double getGust() { return gust; }
         public void setGust(double gust) { this.gust = gust; }
-
-        // 新增：带单位的风速显示
         public String getSpeedWithUnit() {
             return String.format("%.1f米/秒", speed);
         }
@@ -197,42 +185,39 @@ public class WeatherResponse implements Serializable {
 
     // 内部类：云层数据
     public static class Clouds {
-        private int all;              // 云层覆盖率（%）
-
-        // 无参构造函数
+        private int all;
         public Clouds() {}
-
-        // Getters and Setters
         public int getAll() { return all; }
         public void setAll(int all) { this.all = all; }
 
-        // 新增：云层覆盖率中文描述
         public String getCloudCoverCn() {
-            if (all < 10) return "晴朗";
-            if (all < 30) return "少云";
-            if (all < 70) return "多云";
+            if (all < 10) {
+                return "晴朗";
+            }
+            if (all < 30) {
+                return "少云";
+            }
+            if (all < 70) {
+                return "多云";
+            }
             return "阴天";
         }
     }
 
     // 内部类：系统信息
     public static class Sys {
-        private String country;       // 国家代码（如"CN"）
-        private int sunrise;          // 日出时间戳（UTC）
-        private int sunset;           // 日落时间戳（UTC）
+        private String country;
+        private int sunrise;
+        private int sunset;
 
-        // 无参构造函数
         public Sys() {}
 
-        // Getters and Setters
         public String getCountry() { return country; }
         public void setCountry(String country) { this.country = country; }
         public int getSunrise() { return sunrise; }
         public void setSunrise(int sunrise) { this.sunrise = sunrise; }
         public int getSunset() { return sunset; }
         public void setSunset(int sunset) { this.sunset = sunset; }
-
-        // 新增：国家代码转中文
         public String getCountryCn() {
             return WeatherUtils.getCountryCn(country);
         }

@@ -8,11 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenWeatherConfig {
 
-    // Getters
     @Value("${openweather.api.key}")
     private String apiKey;
 
     @Value("${openweather.api.url}")
     private String apiUrl;
-
 }

@@ -27,7 +27,7 @@ public class WeatherController {
     @Operation(summary = "获取天气")
     public Object getWeather(
             @RequestParam(required = true) String city,  // 必须传递城市参数
-            @RequestParam(name = "lang", defaultValue = "en") String lang  // 可选语言参数（默认英文）
+            @RequestParam(name = "lang", defaultValue = "en") String lang  // 可
     ) {
         try {
             // 构建请求URL（支持语言参数，如中文传'zh_cn'）

@@ -17,6 +17,7 @@ import top.wxy.vo.DeviceVO;
 import top.wxy.vo.UserDeviceVO;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,12 +62,33 @@ public class DeviceServiceImpl implements DeviceService {
         Long userId = SecurityUser.getUser().getId();
 
         List<UserDeviceEntity> userDevices = userDeviceDao.getByUserId(userId);
-        List<UserDeviceVO> result = DeviceConvert.INSTANCE.convertUserDeviceList(userDevices);
+        List<UserDeviceVO> result = new ArrayList<>();
         
-        for (UserDeviceVO userDeviceVO : result) {
-            List<DeviceEntity> devices = deviceDao.getByType(userDeviceVO.getType());
-            List<DeviceVO> deviceVO = DeviceConvert.INSTANCE.convertList(devices);
-            userDeviceVO.setDevices(deviceVO);
+        // 手动转换UserDeviceEntity到UserDeviceVO
+        for (UserDeviceEntity entity : userDevices) {
+            UserDeviceVO vo = new UserDeviceVO();
+            vo.setId(entity.getId());
+            vo.setType(entity.getType());
+            vo.setGroupName(entity.getGroupName());
+            vo.setBindTime(entity.getBindTime());
+            
+            // 获取并转换设备列表
+            List<DeviceEntity> devices = deviceDao.getByType(entity.getType());
+            List<DeviceVO> deviceVOs = new ArrayList<>();
+            for (DeviceEntity deviceEntity : devices) {
+                DeviceVO deviceVO = new DeviceVO();
+                deviceVO.setId(deviceEntity.getId());
+                deviceVO.setDeviceMac(deviceEntity.getDeviceMac());
+                deviceVO.setName(deviceEntity.getName());
+                deviceVO.setType(deviceEntity.getType());
+                deviceVO.setStatus(deviceEntity.getStatus());
+                deviceVO.setTemperature(deviceEntity.getTemperature());
+                deviceVO.setHumidity(deviceEntity.getHumidity());
+                deviceVO.setLocation(deviceEntity.getLocation());
+                deviceVOs.add(deviceVO);
+            }
+            vo.setDevices(deviceVOs);
+            result.add(vo);
         }
         
         return result;
