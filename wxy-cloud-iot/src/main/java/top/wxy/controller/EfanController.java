@@ -37,6 +37,13 @@ public class EfanController {
         efanService.turnOff();
         return Result.ok();
     }
+    
+    @PostMapping("/timer/{minutes}")
+    @Operation(summary = "设置定时关闭")
+    public Result<?> setTimer(@PathVariable int minutes) {
+        efanService.setTimer(minutes);
+        return Result.ok();
+    }
 
     @GetMapping("/status/{deviceId}")
     @Operation(summary = "查询风扇状态")
