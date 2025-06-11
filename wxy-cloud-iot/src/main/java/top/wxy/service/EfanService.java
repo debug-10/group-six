@@ -8,4 +8,5 @@ public interface EfanService {
     void turnOff();
     Integer getFanStatus(Long deviceId);
     void updateDeviceStatus(Device device); // 新增方法
+    void setTimer(int minutes); // 新增定时方法
 }

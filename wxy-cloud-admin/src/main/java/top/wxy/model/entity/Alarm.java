@@ -15,7 +15,7 @@ public class Alarm {
     @TableId(value="id",type = IdType.AUTO)
     private Long id;
 
-    private Long deviceId;
+    private String deviceId;
 
     private String type;
 

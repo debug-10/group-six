@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-@Component("adminPermitResource")  // Change the bean name to avoid conflict
+@Component("adminPermitResource")
 public class PermitResource {
     /**
      * 指定被 spring security 忽略的URL

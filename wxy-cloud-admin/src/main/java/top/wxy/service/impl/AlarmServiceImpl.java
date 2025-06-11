@@ -1,5 +1,6 @@
 package top.wxy.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -15,6 +16,9 @@ import top.wxy.model.entity.Device;
 import top.wxy.model.entity.Tenant;
 import top.wxy.service.AlarmService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements AlarmService {
 
@@ -26,7 +30,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
 
     @Override
     public Alarm insert(Alarm entity) {
-        alarmMapper.insert(entity); // ✅ 这是实例方法，OK
+        alarmMapper.insert(entity);
         return entity;
     }
 
@@ -34,7 +38,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
     public Alarm saveAlarm(Alarm entity) {
         // 验证 deviceId 是否存在
         QueryWrapper<Device> deviceQuery = new QueryWrapper<>();
-        deviceQuery.eq("id", entity.getDeviceId()); // 使用 id 字段
+        deviceQuery.eq("id", entity.getDeviceId());
         Device device = deviceMapper.selectOne(deviceQuery);
         if (device == null) {
             throw new RuntimeException("Device ID " + entity.getDeviceId() + " does not exist in t_device table");
@@ -53,7 +57,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
         alarm.setType(dto.getType());
         alarm.setLevel(dto.getLevel());
         alarm.setMessage(dto.getMessage());
-        alarm.setStatus(0); // 默认未处理
+        alarm.setStatus(0);
         return alarm;
     }
 
@@ -75,12 +79,15 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
     }
 
     @Override
-    public AlarmListDTO getAlarmById(Long id) {
-        Alarm alarm = this.getById(id);
-        if (alarm == null) {
-            throw new RuntimeException("Alarm not found with id: " + id);
-        }
-        return convertToListDTO(alarm);
+    public List<AlarmListDTO> getAlarmsByDeviceId(String deviceId) {
+        LambdaQueryWrapper<Alarm> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Alarm::getDeviceId, deviceId)
+                    .orderByDesc(Alarm::getCreateTime);
+        
+        List<Alarm> alarms = this.list(queryWrapper);
+        return alarms.stream()
+                     .map(this::convertToListDTO)
+                     .collect(Collectors.toList());
     }
 
     @Override
@@ -101,7 +108,7 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
         if (alarm == null) {
             throw new RuntimeException("Alarm not found with id: " + id);
         }
-        this.removeById(id); // 物理删除
+        this.removeById(id);
     }
 
     private AlarmListDTO convertToListDTO(Alarm alarm) {

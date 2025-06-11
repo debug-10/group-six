@@ -19,7 +19,7 @@
     
     <select id="getManagerPage" resultType="top.wxy.model.vo.SysManagerVO">
         select * from t_user
-        where role in (1, 2)  <!-- 只查询超级管理员和租户管理员 -->
+        where role in (1, 2)
         <if test="query.username != null and query.username != ''">
             and username like concat('%',#{query.username},'%')
         </if>
