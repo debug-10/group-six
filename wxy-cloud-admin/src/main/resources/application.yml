@@ -82,4 +82,3 @@ auth:
     - /doc.html
     - /api/devices
     - /api/message
-    - /share-admin-api/ws/dashboard

@@ -11,13 +11,7 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: wxy-cloud-admin-ws
-          uri: lb://wxy-cloud-admin
-          order: 0 # 优先于其他路由
-          predicates:
-            - Path=/share-admin-api/**
-          metadata:
-            websocket: true
+
         - id: wxy-cloud-admin
           uri: lb://wxy-cloud-admin
           order: 1
@@ -25,8 +19,7 @@ spring:
             - Path=/share-admin-api/**
           filters:
             - RemoveRequestHeader=Cookie
-            - AddRequestHeader=Connection, Upgrade
-            - AddRequestHeader=Upgrade, websocket
+
         - id: wxy-cloud-user
           uri: lb://wxy-cloud-user
           order: 2
