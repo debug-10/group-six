@@ -3,15 +3,20 @@ package top.wxy.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import top.wxy.framework.common.utils.Result;
 import top.wxy.mapper.AlarmMapper;
 import top.wxy.mapper.DeviceMapper;
 import top.wxy.model.entity.Alarm;
 
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 数据大屏控制器
@@ -94,5 +99,37 @@ public class DashboardController {
             }
         }
         return Result.ok(result);
+    }
+
+    /**
+     * SSE 端点：实时推送仪表板数据
+     */
+    @GetMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @Operation(summary = "SSE 数据推送")
+    public SseEmitter streamDashboardData() {
+        SseEmitter emitter = new SseEmitter(0L); // 0L 表示无超时
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+        executor.scheduleAtFixedRate(() -> {
+            try {
+                // 聚合所有仪表板数据
+                Map<String, Object> data = new HashMap<>();
+                data.put("summary", getSummary().getData());
+                data.put("alarmTrend", getAlarmTrend().getData());
+                data.put("alarmLevelStats", getAlarmLevelStats().getData());
+                data.put("deviceMap", getDeviceMap().getData());
+
+                // 发送 SSE 事件
+                emitter.send(SseEmitter.event().data(data));
+            } catch (Exception e) {
+                emitter.completeWithError(e);
+            }
+        }, 0, 1, TimeUnit.SECONDS); // 每 10 秒推送一次
+
+        // 客户端断开连接时清理
+        emitter.onCompletion(() -> executor.shutdown());
+        emitter.onError((e) -> executor.shutdown());
+
+        return emitter;
     }
 }
