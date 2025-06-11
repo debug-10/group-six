@@ -41,24 +41,16 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
     @Transactional(rollbackFor = Exception.class)
     public void save(SysManagerVO vo) {
         SysManager entity = SysManagerConvert.INSTANCE.convert(vo);
-        // 删除旧的 setSuperAdmin 调用，因为新表结构中没有这个字段
-
-        // 判断用户名是否存在
         SysManager manager = baseMapper.getByUsername(entity.getUsername());
         if (manager != null) {
             throw new ServerException("用户名已经存在");
         }
 
-        // 确保密码不为空
         if (entity.getPassword() == null || entity.getPassword().trim().isEmpty()) {
             throw new ServerException("密码不能为空");
         }
-
-        // 使用 PasswordEncoder 加密密码，它会自动添加 {bcrypt} 前缀
         String encodedPassword = passwordEncoder.encode(entity.getPassword());
         entity.setPassword(encodedPassword);
-
-        // 保存用户
         baseMapper.insert(entity);
     }
 
@@ -66,30 +58,23 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
     @Transactional(rollbackFor = Exception.class)
     public void update(SysManagerVO vo) {
         SysManager entity = SysManagerConvert.INSTANCE.convert(vo);
-        
-        // 检查用户名是否已存在（排除当前用户）
+
         SysManager existingManager = baseMapper.getByUsername(entity.getUsername());
         if (existingManager != null && !existingManager.getId().equals(entity.getId())) {
             throw new ServerException("用户名已经存在");
         }
-    
-        // 只有当密码不为空且不是空字符串时才进行加密
         if (StrUtil.isNotBlank(entity.getPassword())) {
             String encodedPassword = passwordEncoder.encode(entity.getPassword());
             entity.setPassword(encodedPassword);
         } else {
-            // 如果密码为空或空字符串，则不更新密码字段
             entity.setPassword(null);
         }
-    
-        // 更新用户
         updateById(entity);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void delete(List<Long> idList) {
-        // 删除管理员
         removeByIds(idList);
     }
 
@@ -115,11 +100,10 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
 
     @Override
     public void changePassword(ChangePasswordQuery query) {
-        SysManager sysManager = baseMapper.selectById(query.getId()); // 假设ChangePasswordQuery也需要更新字段名
+        SysManager sysManager = baseMapper.selectById(query.getId());
         if (sysManager == null) {
             throw new ServerException("管理员不存在");
         }
-        // 使用 PasswordEncoder 加密密码，它会自动添加 {bcrypt} 前缀
         String encodedPassword = passwordEncoder.encode(query.getPassword());
         sysManager.setPassword(encodedPassword);
         updateById(sysManager);
@@ -131,12 +115,8 @@ public class SysManagerServiceImpl extends BaseServiceImpl<SysManagerMapper, Sys
         if (manager == null) {
             throw new ServerException("用户不存在");
         }
-        
-        // 使用 PasswordEncoder 加密密码，它会自动添加 {bcrypt} 前缀
         String encodedPassword = passwordEncoder.encode(newPassword);
         manager.setPassword(encodedPassword);
-        
-        // 更新密码
         baseMapper.updateById(manager);
     }
 }

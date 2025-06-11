@@ -40,11 +40,9 @@ public class AuthServiceImpl implements AuthService {
         } catch (BadCredentialsException e) {
             throw new ServerException("用户名或密码错误");
         }
-    
-        // 用户信息
+
         ManagerDetail managerDetail = (ManagerDetail) authentication.getPrincipal();
-    
-        // 转换为UserDetail
+
         UserDetail user = new UserDetail();
         user.setId(managerDetail.getId().longValue());
         user.setUsername(managerDetail.getUsername());
@@ -54,10 +52,8 @@ public class AuthServiceImpl implements AuthService {
         user.setAccountNonLocked(managerDetail.isAccountNonLocked());
         user.setCredentialsNonExpired(managerDetail.isCredentialsNonExpired());
         user.setAuthoritySet(managerDetail.getAuthoritySet());
-    
-        // 生成 accessToken
+
         String accessToken = TokenUtils.generator();
-        // 保存用户信息到缓存
         tokenStoreCache.saveUser(accessToken, user);
     
         // 构建用户信息
@@ -70,17 +66,13 @@ public class AuthServiceImpl implements AuthService {
         userInfo.setTenantId(managerDetail.getTenantId());
         userInfo.setRole(managerDetail.getRole());
         userInfo.setStatus(managerDetail.getStatus());
-    
-        // 返回包含用户信息的token对象
+
         return new SysTokenVO(accessToken, userInfo);
     }
 
     @Override
     public void logout(String accessToken) {
-        // 用户信息
         UserDetail user = tokenStoreCache.getUser(accessToken);
-
-        // 删除用户信息
         tokenStoreCache.deleteUser(accessToken);
     }
 

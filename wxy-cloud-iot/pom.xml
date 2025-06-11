@@ -21,11 +21,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.0</version> <!-- 版本可按需调整，建议使用较新稳定版 -->
-        </dependency>
-        <dependency>
             <groupId>top.wxy</groupId>
             <artifactId>wxy-cloud-framework</artifactId>
             <version>${revision}</version>
@@ -52,6 +47,10 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
     </dependencies>
     <build>

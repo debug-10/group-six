@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import top.wxy.convert.DeviceConvert;
 import top.wxy.dao.*;
 import top.wxy.dto.DeviceAddDTO;
+import top.wxy.dto.DeviceUnbindDTO;
 import top.wxy.entity.DeviceEntity;
 import top.wxy.entity.UserDeviceEntity;
 import top.wxy.framework.common.exception.ServerException;
@@ -21,7 +22,11 @@ import top.wxy.vo.DeviceVO;
 import top.wxy.vo.UserDeviceVO;
 
 import java.time.LocalDateTime;
+
 import java.util.Collections;
+
+import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -44,7 +49,6 @@ public class DeviceServiceImpl implements DeviceService {
     public void addDeviceToUser(DeviceAddDTO dto) {
         Long userId = SecurityUser.getUser().getId();
 
-        // 根据单个device_mac查询设备信息
         DeviceEntity device = deviceDao.selectOne(new QueryWrapper<DeviceEntity>()
                 .eq("device_mac", dto.getDeviceMac()));
 
@@ -82,7 +86,6 @@ public class DeviceServiceImpl implements DeviceService {
             throw new ServerException("您已经绑定了该类型的设备场景");
         }
 
-        // 创建用户设备绑定记录
         UserDeviceEntity userDevice = new UserDeviceEntity();
         userDevice.setUserId(userId);
         userDevice.setType(device.getType());
@@ -92,16 +95,45 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void unbindUserDevice(DeviceUnbindDTO dto) {
+        Long userId = SecurityUser.getUser().getId();
+        UserDeviceEntity userDevice = userDeviceDao.getByUserIdAndType(userId, dto.getType());
+        if (userDevice == null) {
+            throw new ServerException("未找到对应类型的设备绑定记录");
+        }
+        userDeviceDao.deleteById(userDevice.getId());
+    }
+    
+    @Override
     public List<UserDeviceVO> getUserDevices() {
         Long userId = SecurityUser.getUser().getId();
 
         List<UserDeviceEntity> userDevices = userDeviceDao.getByUserId(userId);
-        List<UserDeviceVO> result = DeviceConvert.INSTANCE.convertUserDeviceList(userDevices);
-        
-        for (UserDeviceVO userDeviceVO : result) {
-            List<DeviceEntity> devices = deviceDao.getByType(userDeviceVO.getType());
-            List<DeviceVO> deviceVOs = DeviceConvert.INSTANCE.convertList(devices);
-            userDeviceVO.setDevices(deviceVOs);
+        List<UserDeviceVO> result = new ArrayList<>();
+
+        for (UserDeviceEntity entity : userDevices) {
+            UserDeviceVO vo = new UserDeviceVO();
+            vo.setId(entity.getId());
+            vo.setType(entity.getType());
+            vo.setGroupName(entity.getGroupName());
+            vo.setBindTime(entity.getBindTime());
+            List<DeviceEntity> devices = deviceDao.getByType(entity.getType());
+            List<DeviceVO> deviceVOs = new ArrayList<>();
+            for (DeviceEntity deviceEntity : devices) {
+                DeviceVO deviceVO = new DeviceVO();
+                deviceVO.setId(deviceEntity.getId());
+                deviceVO.setDeviceMac(deviceEntity.getDeviceMac());
+                deviceVO.setName(deviceEntity.getName());
+                deviceVO.setType(deviceEntity.getType());
+                deviceVO.setStatus(deviceEntity.getStatus());
+                deviceVO.setTemperature(deviceEntity.getTemperature());
+                deviceVO.setHumidity(deviceEntity.getHumidity());
+                deviceVO.setLocation(deviceEntity.getLocation());
+                deviceVOs.add(deviceVO);
+            }
+            vo.setDevices(deviceVOs);
+            result.add(vo);
         }
         
         return result;

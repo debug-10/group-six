@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +23,8 @@ import org.springframework.messaging.MessageChannel;
 @Data
 @Slf4j
 @Configuration
-@ConfigurationProperties(prefix = "mqtt") // 保留原有配置绑定
-@PropertySource(value = "nacos:common.yaml", ignoreResourceNotFound = true) // 显式指定配置源
+@ConfigurationProperties(prefix = "mqtt")
+@PropertySource(value = "nacos:common.yaml", ignoreResourceNotFound = true)
 public class MqttConfig {
     private String brokerUrl;
     private String username;
@@ -32,16 +33,16 @@ public class MqttConfig {
 
     // 直接通过 @Value 注入主题配置（无需在类中定义字段）
     @Value("${mqtt.fan-control-topic}")
-    private String fanControlTopic; // 风扇控制主题（从配置文件获取）
+    private String fanControlTopic;
 
     @Value("${mqtt.rgb-control-topic}")
-    private String rgbControlTopic; // RGB控制主题（从配置文件获取）
+    private String rgbControlTopic;
 
     @Value("${mqtt.fan-status-topic}")
-    private String fanStatusTopic; // 风扇状态主题（从配置文件获取）
+    private String fanStatusTopic;
 
     @Value("${mqtt.rgb-status-topic}")
-    private String rgbStatusTopic; // RGB状态主题（从配置文件获取）
+    private String rgbStatusTopic;
 
     @PostConstruct
     public void init() {
@@ -63,12 +64,12 @@ public class MqttConfig {
     // ---------------------- 输出通道（发送消息） ----------------------
     @Bean
     public MessageChannel fanControlChannel() {
-        return new DirectChannel(); // 风扇控制指令通道
+        return new DirectChannel();
     }
 
     @Bean
     public MessageChannel rgbControlChannel() {
-        return new DirectChannel(); // RGB控制指令通道
+        return new DirectChannel();
     }
 
     // 风扇控制消息处理器（使用注入的主题）
@@ -76,7 +77,7 @@ public class MqttConfig {
     @ServiceActivator(inputChannel = "fanControlChannel")
     public MqttPahoMessageHandler fanControlMessageHandler() {
         MqttPahoMessageHandler handler = new MqttPahoMessageHandler(
-                fanControlTopic, // 直接使用注入的主题值
+                fanControlTopic,
                 mqttClientFactory()
         );
         handler.setAsync(true);
@@ -90,7 +91,7 @@ public class MqttConfig {
     @ServiceActivator(inputChannel = "rgbControlChannel")
     public MqttPahoMessageHandler rgbControlMessageHandler() {
         MqttPahoMessageHandler handler = new MqttPahoMessageHandler(
-                rgbControlTopic, // 直接使用注入的主题值
+                rgbControlTopic,
                 mqttClientFactory()
         );
         handler.setAsync(true);
@@ -102,7 +103,7 @@ public class MqttConfig {
     // ---------------------- 输入通道（接收消息） ----------------------
     @Bean
     public MessageChannel fanStatusChannel() {
-        return new DirectChannel(); // 风扇状态通道
+        return new DirectChannel();
     }
 
     @Bean
@@ -110,7 +111,7 @@ public class MqttConfig {
         MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(
                 clientId + "_fan_in",
                 mqttClientFactory(),
-                new String[]{fanStatusTopic} // 使用注入的状态主题
+                new String[]{fanStatusTopic}
         );
         adapter.setCompletionTimeout(5000);
         adapter.setOutputChannel(fanStatusChannel());
@@ -119,7 +120,7 @@ public class MqttConfig {
 
     @Bean
     public MessageChannel rgbStatusChannel() {
-        return new DirectChannel(); // RGB状态通道
+        return new DirectChannel();
     }
 
     @Bean
@@ -127,10 +128,56 @@ public class MqttConfig {
         MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(
                 clientId + "_rgb_in",
                 mqttClientFactory(),
-                new String[]{rgbStatusTopic} // 使用注入的状态主题
+                new String[]{rgbStatusTopic}
         );
         adapter.setCompletionTimeout(5000);
         adapter.setOutputChannel(rgbStatusChannel());
+        return adapter;
+    }
+
+    // 在现有的@Value注解下添加
+    @Value("${mqtt.nightlight-control-topic}")
+    private String nightlightControlTopic;
+
+    @Value("${mqtt.nightlight-status-topic}")
+    private String nightlightStatusTopic;
+
+    // 添加夜灯控制通道
+    @Bean
+    public MessageChannel nightlightControlChannel() {
+        return new DirectChannel();
+    }
+
+    // 夜灯控制消息处理器
+    @Bean
+    @ServiceActivator(inputChannel = "nightlightControlChannel")
+    public MqttPahoMessageHandler nightlightControlMessageHandler() {
+        MqttPahoMessageHandler handler = new MqttPahoMessageHandler(
+                nightlightControlTopic,
+                mqttClientFactory()
+        );
+        handler.setAsync(true);
+        handler.setDefaultQos(1);
+        handler.setConverter(new DefaultPahoMessageConverter());
+        return handler;
+    }
+
+    // 添加夜灯状态通道
+    @Bean
+    public MessageChannel nightlightStatusChannel() {
+        return new DirectChannel();
+    }
+
+    // 夜灯状态消息接收器
+    @Bean
+    public MessageProducer nightlightStatusInbound() {
+        MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(
+                clientId + "_nightlight_in",
+                mqttClientFactory(),
+                new String[]{nightlightStatusTopic}
+        );
+        adapter.setCompletionTimeout(5000);
+        adapter.setOutputChannel(nightlightStatusChannel());
         return adapter;
     }
 }

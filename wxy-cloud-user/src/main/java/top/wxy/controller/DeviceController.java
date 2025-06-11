@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import top.wxy.dto.DeviceAddDTO;
+import top.wxy.dto.DeviceUnbindDTO;
 import top.wxy.framework.common.utils.Result;
 import top.wxy.service.DeviceService;
 import top.wxy.vo.UserDeviceVO;
@@ -36,5 +37,12 @@ public class DeviceController {
     public Result<List<UserDeviceVO>> getUserDevices() {
         List<UserDeviceVO> userDevices = deviceService.getUserDevices();
         return Result.ok(userDevices);
+    }
+    
+    @PostMapping("unbind")
+    @Operation(summary = "解绑用户设备")
+    public Result<String> unbindUserDevice(@RequestBody @Valid DeviceUnbindDTO dto) {
+        deviceService.unbindUserDevice(dto);
+        return Result.ok("设备解绑成功");
     }
 }

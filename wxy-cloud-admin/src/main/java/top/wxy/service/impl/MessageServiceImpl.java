@@ -41,6 +41,6 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
     @Override
     public Message saveAndReturn(Message entity) {
         super.save(entity);
-        return entity; // 返回保存后的实体（ID已填充）
+        return entity;
     }
 }

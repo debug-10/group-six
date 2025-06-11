@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class AlarmDTO {
-    private Long deviceId;
+    private String deviceId;
     private String type;
     private Integer level;
     private String message;
-    private Integer status; // 用于更新接口
+    private Integer status;
 }

@@ -19,8 +19,6 @@ public class NewsVO {
 
     @Schema(description = "创建时间", required = true)
     private LocalDateTime createTime;
-
-//    // 可选：保留租户名称（若概览需要显示所属租户）
-//    @Schema(description = "租户名称")
-//    private String tenantName;
+    @Schema(description = "租户名称")
+    private String tenantName;
 }

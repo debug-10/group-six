@@ -29,7 +29,7 @@ public class DeviceVO {
     @Schema(description = "更新时间")
     private LocalDateTime updateTime;
     @Schema(description = "设备安装位置")
-    private String location; // 新增字段
+    private String location;
 
     @Data
     public static class Pagination {

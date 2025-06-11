@@ -1,5 +1,6 @@
 package top.wxy.convert;
 
+import lombok.Data;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -19,5 +20,9 @@ public interface UserConvert {
     UserEntity convert(UserDTO dto);
     UserVO convert(UserDetail userDetail);
     UserEntity convert(MobileLoginDTO dto);
+
+    @Mapping(target = "status", expression = "java(entity.getStatus())")
+    @Mapping(target = "id", expression = "java(entity.getId())")
+    @Mapping(target = "password", expression = "java(entity.getPassword())")
     UserDetail convertDetail(UserEntity entity);
 }
