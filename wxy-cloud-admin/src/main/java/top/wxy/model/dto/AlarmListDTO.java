@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class AlarmListDTO {
     private Long id;
-    private Long deviceId;
+    private String deviceId;
     private String type;
     private Integer level;
     private String message;

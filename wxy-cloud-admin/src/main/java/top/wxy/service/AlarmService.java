@@ -5,6 +5,8 @@ import top.wxy.model.dto.AlarmDTO;
 import top.wxy.model.dto.AlarmListDTO;
 import top.wxy.model.entity.Alarm;
 
+import java.util.List;
+
 public interface AlarmService {
     Alarm insert(Alarm entity);
 
@@ -14,7 +16,8 @@ public interface AlarmService {
 
     IPage<AlarmListDTO> listAlarms(int page, int limit, Integer status, Integer level);
 
-    AlarmListDTO getAlarmById(Long id);
+
+    List<AlarmListDTO> getAlarmsByDeviceId(String deviceId);
 
     void updateAlarm(Long id, AlarmDTO dto);
 

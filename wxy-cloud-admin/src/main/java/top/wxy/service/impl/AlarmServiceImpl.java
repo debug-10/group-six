@@ -1,5 +1,6 @@
 package top.wxy.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -14,6 +15,9 @@ import top.wxy.model.entity.Alarm;
 import top.wxy.model.entity.Device;
 import top.wxy.model.entity.Tenant;
 import top.wxy.service.AlarmService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements AlarmService {
@@ -75,12 +79,15 @@ public class AlarmServiceImpl extends ServiceImpl<AlarmMapper, Alarm> implements
     }
 
     @Override
-    public AlarmListDTO getAlarmById(Long id) {
-        Alarm alarm = this.getById(id);
-        if (alarm == null) {
-            throw new RuntimeException("Alarm not found with id: " + id);
-        }
-        return convertToListDTO(alarm);
+    public List<AlarmListDTO> getAlarmsByDeviceId(String deviceId) {
+        LambdaQueryWrapper<Alarm> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Alarm::getDeviceId, deviceId)
+                    .orderByDesc(Alarm::getCreateTime);
+        
+        List<Alarm> alarms = this.list(queryWrapper);
+        return alarms.stream()
+                     .map(this::convertToListDTO)
+                     .collect(Collectors.toList());
     }
 
     @Override
