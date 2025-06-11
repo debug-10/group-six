@@ -20,4 +20,12 @@ public interface UserDao extends BaseDao<UserEntity> {
     default UserEntity getByPhone(String phone) {
         return this.selectOne(new QueryWrapper<UserEntity>().eq("phone", phone));
     }
+
+    //先通过用户ID查用户租户，下一步在tenantDAO
+    default Long getTenantIdByUserId(Long userId) {
+        UserEntity user = this.selectOne(new QueryWrapper<UserEntity>()
+                .select("tenant_id")
+                .eq("id", userId));
+        return user != null ? user.getTenantId() : null;
+    }
 }
