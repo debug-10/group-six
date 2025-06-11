@@ -16,13 +16,10 @@
 //import top.wxy.service.DeviceService;
 //import top.wxy.vo.DeviceVO;
 //
-///**
+
 // * @author 笼中雀
 // */
-//@RestController
-//@RequestMapping("api/device")
-//@Tag(name = "设备模块")
-//@AllArgsConstructor
+
 //public class DeviceController {
 //    private final DeviceService deviceService;
 //    @PostMapping("/save")

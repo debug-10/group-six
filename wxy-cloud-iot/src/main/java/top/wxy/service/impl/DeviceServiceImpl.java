@@ -27,12 +27,10 @@
 //import java.util.List;
 //import java.util.Map;
 //
-///**
+
 // * @author 笼中雀
 // */
-//@Service
-//@Slf4j
-//@AllArgsConstructor
+
 //public class DeviceServiceImpl extends BaseServiceImpl<DeviceDao, Device> implements DeviceService {
 //    private final MessageChannel mqttOutboundChannel;
 //
