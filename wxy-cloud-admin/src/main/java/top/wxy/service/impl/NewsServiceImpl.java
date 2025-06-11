@@ -41,15 +41,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
         if (news == null) {
             throw new RuntimeException("公告不存在，ID: " + dto.getId());
         }
-
-        // 复制DTO中的属性到实体（忽略ID，避免修改主键）
         BeanUtils.copyProperties(dto, news, "id");
-
-        // 若需要强制限制可见范围（根据需求）
-        // if (dto.getVisibleRange() != null) {
-        //     news.setVisibleRange(dto.getVisibleRange());
-        // }
-
         this.updateById(news);
     }
 
@@ -65,7 +57,6 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
             return null;
         }
         NewsDetailVO vo = new NewsDetailVO();
-        // 只复制 NewsDetailVO 中存在的字段（title, content, createTime, updateTime）
         BeanUtils.copyProperties(news, vo);
         return vo;
     }
@@ -74,25 +65,17 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     public List<NewsVO> listNews(String title, Integer visibleRange, Long tenantId) {
         LambdaQueryWrapper<News> queryWrapper = new LambdaQueryWrapper<>();
 
-        // 超管场景：不传入任何参数时返回所有记录
-        boolean isAdminQuery = title == null && visibleRange == null && tenantId == null;
-        if (!isAdminQuery) {
-            // 构建查询条件
-            queryWrapper.like(title != null, News::getTitle, title);
+        // 构建查询条件
+        queryWrapper.like(title != null, News::getTitle, title)
+                .eq(visibleRange != null, News::getVisibleRange, visibleRange);
 
-            // 普通用户场景：仅根据租户ID筛选
-            if (tenantId != null) {
-                // 查询条件：(tenantId=null) 或者 (tenantId=指定值)
-                // 即返回所有公共新闻和指定租户的新闻
-                queryWrapper.and(wrapper ->
-                        wrapper.isNull(News::getTenantId)
-                                .or()
-                                .eq(News::getTenantId, tenantId)
-                );
-            } else {
-                // 未指定租户ID时，默认只查询租户ID为null的记录（公共新闻）
-                queryWrapper.isNull(News::getTenantId);
+        if (visibleRange != null && visibleRange == 2) {
+            if (tenantId == null) {
+                throw new RuntimeException("指定租户可见时，必须传入tenantId");
             }
+            queryWrapper.eq(News::getTenantId, tenantId);
+        } else {
+            queryWrapper.isNull(News::getTenantId);
         }
 
         queryWrapper.orderByDesc(News::getCreateTime);
@@ -101,6 +84,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
         return newsList.stream().map(news -> {
             NewsVO vo = new NewsVO();
             BeanUtils.copyProperties(news, vo, "content");
+            vo.setTenantName("模拟租户名称");
             return vo;
         }).collect(Collectors.toList());
     }

@@ -28,21 +28,18 @@ public class DeviceController {
 
     @PostMapping
     @Operation(summary = "创建设备")
-//    @PreAuthorize("hasAuthority('sys:device:create')")
     public Result<Long> create(@RequestBody @Valid DeviceCreateDTO dto) {
         return Result.ok(deviceService.saveDevice(DeviceConvert.INSTANCE.toEntity(dto)).getId());
     }
 
     @PostMapping("/page")
     @Operation(summary = "分页查询设备")
-//    @PreAuthorize("hasAuthority('sys:device:view')")
     public Result<PageResult<DeviceVO>> page(@RequestBody @Valid DeviceQuery query) {
         return Result.ok(deviceService.page(query));
     }
 
     @PutMapping
     @Operation(summary = "更新设备")
-//    @PreAuthorize("hasAuthority('sys:device:edit')")
     public Result<String> update(@RequestBody @Valid DeviceUpdateDTO dto) {
         deviceService.update(dto);
         return Result.ok();
@@ -50,14 +47,12 @@ public class DeviceController {
 
     @PostMapping("/export")
     @Operation(summary = "导出设备")
-//    @PreAuthorize("hasAuthority('sys:device:export')")
     public void export(@RequestBody DeviceQuery query, HttpServletResponse response) {
         deviceService.export(query, response);
     }
 
     @PutMapping("/status")
     @Operation(summary = "更新设备状态")
-//    @PreAuthorize("hasAuthority('sys:device:status')")
     public Result<String> updateStatus(@RequestBody @Valid DeviceStatusDTO dto) {
         deviceService.updateStatus(dto);
         return Result.ok();
@@ -65,7 +60,6 @@ public class DeviceController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除设备")
-//    @PreAuthorize("hasAuthority('sys:device:delete')")
     public Result<String> delete(@PathVariable Long id) {
         deviceService.removeById(id);
         return Result.ok();

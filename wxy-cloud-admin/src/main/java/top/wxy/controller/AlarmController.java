@@ -11,10 +11,13 @@ import top.wxy.model.dto.AlarmDTO;
 import top.wxy.model.dto.AlarmListDTO;
 import top.wxy.model.entity.Alarm;
 import top.wxy.service.AlarmService;
-
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author 笼中雀
+ */
 @RestController
 @RequestMapping("/alarms")
 @Tag(name = "告警管理")
@@ -54,12 +57,15 @@ public class AlarmController {
         return ApiResponse.success("查询成功", data);
     }
 
-    @GetMapping("/{id}")
-    @Operation(summary = "查询告警")
-    public ApiResponse<Map<String, AlarmListDTO>> getAlarmById(@PathVariable Long id) {
-        AlarmListDTO alarm = alarmService.getAlarmById(id);
-        Map<String, AlarmListDTO> data = new HashMap<>();
-        data.put("alarm", alarm);
+
+
+    // 将原有的接口路径修改为根据设备ID查询
+    @GetMapping("/{deviceId}")
+    @Operation(summary = "根据设备ID查询告警")
+    public ApiResponse<Map<String, List<AlarmListDTO>>> getAlarmsByDeviceId(@PathVariable String deviceId) {
+        List<AlarmListDTO> alarms = alarmService.getAlarmsByDeviceId(deviceId);
+        Map<String, List<AlarmListDTO>> data = new HashMap<>();
+        data.put("alarms", alarms);
         return ApiResponse.success("查询成功", data);
     }
 
