@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 spring:
   application:
     name: wxy-cloud-gateway
@@ -12,11 +11,15 @@ spring:
         locator:
           enabled: true
       routes:
+
         - id: wxy-cloud-admin
           uri: lb://wxy-cloud-admin
           order: 1
           predicates:
             - Path=/share-admin-api/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
         - id: wxy-cloud-user
           uri: lb://wxy-cloud-user
           order: 2
@@ -38,7 +41,8 @@ spring:
             - Path=/iot/**
           filters:
             - StripPrefix=1
-
+          metadata:
+            websocket: true
     nacos:
       username: @nacos.username@
       password: @nacos.password@
@@ -53,8 +57,6 @@ spring:
       - optional:nacos:${spring.application.name}.yaml
       - optional:nacos:datasource.yaml
       - optional:nacos:common.yaml
-
-# knife4j网关聚合配置
 knife4j:
   gateway:
     enabled: true
