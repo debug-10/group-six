@@ -10,7 +10,7 @@ public interface UserService extends IService<User> {
 
     void updateUser(Long id, UserDTO userDTO);
 
-    boolean deleteUser(Long id);
+    boolean toggleUserStatus(Long id);
 
     IPage<UserDTO> listUsers(int page, int limit, Integer status, Integer role);
 }

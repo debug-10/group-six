@@ -79,10 +79,10 @@ public class UserController {
         return ApiResponse.success("用户信息更新成功");
     }
 
-    @DeleteMapping("/{id}")
-    @Operation(summary = "删除用户")
+    @PutMapping("/status/{id}")
+    @Operation(summary = "切换用户状态")
     public ApiResponse<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return ApiResponse.success("用户删除成功");
+        userService.toggleUserStatus(id);
+        return ApiResponse.success("用户状态切换成功");
     }
 }
