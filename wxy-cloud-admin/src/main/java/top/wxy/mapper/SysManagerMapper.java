@@ -15,7 +15,6 @@ public interface SysManagerMapper extends BaseMapper<SysManager> {
     default SysManager getByUsername(String username) {
         return this.selectOne(new LambdaQueryWrapper<SysManager>()
                 .eq(SysManager::getUsername, username)
-                // 删除 deleteFlag 条件，因为新表结构中没有这个字段
                 .select(SysManager::getId,
                         SysManager::getUsername,
                         SysManager::getPassword,

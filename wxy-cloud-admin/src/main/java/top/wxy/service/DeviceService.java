@@ -19,7 +19,5 @@ public interface DeviceService extends IService<Device> {
     void export(DeviceQuery query, HttpServletResponse response);
 
     void updateStatus(DeviceStatusDTO dto);
-
-    // 新增自定义方法，返回 Device 对象
     Device saveDevice(Device entity);
 }

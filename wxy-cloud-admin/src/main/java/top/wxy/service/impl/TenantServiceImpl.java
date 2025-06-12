@@ -25,13 +25,12 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
 
     @Override
     public Tenant insert(Tenant entity) {
-        tenantMapper.insert(entity); // ✅ 这是实例方法，OK
+        tenantMapper.insert(entity);
         return entity;
     }
 
     @Override
     public Tenant saveTenant(Tenant entity) {
-        // 验证 adminUsername 是否存在
         QueryWrapper<User> userQuery = new QueryWrapper<>();
         userQuery.eq("username", entity.getAdminUsername());
         User user = userMapper.selectOne(userQuery);
@@ -40,7 +39,7 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
         }
 
         System.out.println("Before insert: " + entity);
-        this.insert(entity); // ✅ 调用你自定义的 insert 方法
+        this.insert(entity);
         System.out.println("After insert, tenantId: " + entity.getTenantId());
         return entity;
     }
@@ -51,7 +50,7 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
         tenant.setTenantName(dto.getTenantName());
         tenant.setPackageType(dto.getPackageType());
         tenant.setAdminUsername(dto.getAdminUsername());
-        tenant.setStatus(1); // 默认启用
+        tenant.setStatus(1);
         return tenant;
     }
 
@@ -102,7 +101,7 @@ public class TenantServiceImpl extends ServiceImpl<TenantMapper, Tenant> impleme
         if (tenant == null) {
             throw new RuntimeException("Tenant not found with id: " + id);
         }
-        tenant.setStatus(0); // 逻辑删除
+        tenant.setStatus(0);
         this.updateById(tenant);
     }
 
