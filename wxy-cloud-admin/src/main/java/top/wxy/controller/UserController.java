@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import top.wxy.model.dto.ApiResponse;
 import top.wxy.model.dto.PaginationDTO;
 import top.wxy.model.dto.UserDTO;
+import top.wxy.model.dto.UserUpdateDTO;
 import top.wxy.model.entity.User;
 import top.wxy.service.UserService;
 
@@ -74,8 +75,8 @@ public class UserController {
 
     @PutMapping("/{id}")
     @Operation(summary = "更新用户")
-    public ApiResponse<Void> updateUser(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
-        userService.updateUser(id, userDTO);
+    public ApiResponse<Void> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO userUpdateDTO) {
+        userService.updateUser(id, userUpdateDTO);
         return ApiResponse.success("用户信息更新成功");
     }
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.wxy.mapper.UserMapper;
 import top.wxy.model.dto.UserDTO;
+import top.wxy.model.dto.UserUpdateDTO;
 import top.wxy.model.entity.User;
 import top.wxy.service.UserService;
 
@@ -33,12 +34,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public void updateUser(Long id, UserDTO userDTO) {
+    public void updateUser(Long id, UserUpdateDTO userUpdateDTO) {
         User user = userMapper.selectById(id);
 //        if (user == null) {
 //            throw new RuntimeException("用户不存在");
 //        }
-        BeanUtils.copyProperties(userDTO, user);
+        BeanUtils.copyProperties(userUpdateDTO, user);
         user.setId(id);
         userMapper.updateById(user);
     }
