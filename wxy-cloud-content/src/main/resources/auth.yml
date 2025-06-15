@@ -1,7 +1,0 @@
-auth:
-  ignore_urls:
-    - /api/note/page
-    - /api/category/list
-    - /api/note/category
-    - /api/user/getUserById
-    - /api/note/*
